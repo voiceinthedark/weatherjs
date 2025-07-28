@@ -1,0 +1,105 @@
+@font-face {
+  font-family: "lato";
+  src:
+    url("../assets/fonts/Lato-Regular.ttf") format("truetype"),
+    url("../assets/fonts/Lato-Bold.ttf") format("truetype"),
+    url("../assets/fonts/Lato-Italic.ttf") format("truetype");
+  font-weight: 400, 700, 400;
+  font-style: normal, normal, italic;
+}
+
+@font-face {
+  font-family: "Font Awesome 6 Free";
+  src: url("../assets/fonts/fa-solid-900.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src:
+    url("../assets/fonts/Montserrat/Montserrat-VariableFont_wght.ttf")
+      format("truetype"),
+    url("../assets/fonts/Montserrat/Montserrat-Italic-VariableFont_wght.ttf")
+      format("truetype");
+  font-weight: 100 900;
+  font-style: normal, italic;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-color-main: #e3d8f1;
+  --color-main: #000;
+  --sidebar-bg-color: #222e50;
+  --sidebar-color: #fff;
+  --bg-color-secondary: #007991;
+  --bg-color-tertiary: #50d8d7;
+  --color-tea: #beffc7;
+  --color-grayish: #b0b0b0;
+
+  --pale-purple: #e3d8f1ff;
+  --space-cadet: #222e50ff;
+  --cerulean: #007991ff;
+  --tea-green: #beffc7ff;
+  --robin-egg-blue: #50d8d7ff;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  color: var(--color-main);
+  font-family: "lato", sans-serif;
+  font-size: 16px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  & > .dropmenu {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+
+    & > div {
+      display: flex;
+      flex-direction: column;
+      width: fit-content;
+      min-width: 100px;
+    }
+
+    & > div > span {
+      font-size: 130%;
+      padding-bottom: 5px;
+      border: 1px solid black;
+      background-color: var(--bg-color-secondary);
+      text-align: center;
+    }
+
+    & > div > ul {
+      display: flex;
+      flex-direction: column;
+    }
+
+    & > div > ul > li {
+      padding-top: 5px;
+      padding-bottom: 5px;
+      display: flex;
+      justify-content: center;
+      border-width: 0 1px 1px 1px;
+      border-style: solid;
+      border-color: black;
+    }
+  }
+}
