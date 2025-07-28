@@ -1,5 +1,7 @@
-# Dynamic dropdown menu with vanilla javascript
+# WeatherJS
 
 ## About
 
-A dropdown menu using only vanilla javascript.
+A weather fetcher application with vanilla javascript.
+
+## Assets
