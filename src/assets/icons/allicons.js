@@ -21,9 +21,21 @@ import rainSnowShowersDayIcon from './rain-snow-showers-day.svg'
 import rainSnowShowersNightIcon from './rain-snow-showers-night.svg'
 import rainSnowIcon from './rain-snow.svg'
 import sleetIcon from './sleet.svg'
+import windspeedIcon from './icons8-wind-96.png';
+import solarenergyIcon from './icons8-solar-energy-96.png';
+import rainProbabilityIcon from './icons8-rain-sensor-96.png'
+import precipitationIcon from './icons8-rainmeter-96.png'
+import sunriseIcon from './icons8-sunrise-96.png'
+import sunsetIcon from './icons8-sunset-96.png'
 
 const allIcons = {
   humidity: humidityIcon,
+  windspeed: windspeedIcon,
+  solarenergy: solarenergyIcon,
+  rainprobability: rainProbabilityIcon,
+  precipitation: precipitationIcon,
+  sunrise: sunriseIcon,
+  sunset: sunsetIcon,
   'clear-day': clearDayIcon,
   'clear-night': clearNightIcon,
   cloudy: cloudyIcon,

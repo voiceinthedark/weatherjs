@@ -33,18 +33,10 @@
 :root {
   --bg-color-main: #e3d8f1;
   --color-main: #000;
-  --sidebar-bg-color: #222e50;
-  --sidebar-color: #fff;
-  --bg-color-secondary: #007991;
-  --bg-color-tertiary: #50d8d7;
-  --color-tea: #beffc7;
   --color-grayish: #b0b0b0;
+  --color-cloudy: rgb(139,173,176);
+  --color-clear: rgb(255, 252, 54);
 
-  --pale-purple: #e3d8f1ff;
-  --space-cadet: #222e50ff;
-  --cerulean: #007991ff;
-  --tea-green: #beffc7ff;
-  --robin-egg-blue: #50d8d7ff;
 }
 
 body {
@@ -66,11 +58,12 @@ body {
   .day-card {
     display: flex;
     flex-direction: column;
-    width: 600px;
+    gap: 8px;
+    width: 500px;
     box-shadow: 0px 2px 12px 2px black;
     padding: 10px 20px;
     border-radius: 12px;
-    height: 450px;
+    height: 350px;
 
     .day-top-div {
       display: flex;
@@ -80,10 +73,10 @@ body {
       position: relative;
       padding-top: 25px;
 
-      .day-icon{
+      .day-icon {
         position: absolute;
         top: -10px;
-        left:0;
+        left: 0;
         width: 50px;
         height: 50px;
         object-fit: contain;
@@ -95,17 +88,102 @@ body {
         letter-spacing: 3q;
       }
 
-      .day-feel{
+      .day-feel {
         align-self: flex-end;
         color: var(--color-grayish);
         padding-bottom: 10px;
         font-size: 80%;
       }
-      .day-date{
+
+      .day-date {
         align-self: center;
       }
     }
 
+    .day-body {
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      gap: 28px;
 
+      .day-body-top {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+
+
+        .day-solar-div,
+        .day-wind-div,
+        .day-humidity-div {
+          display: flex;
+          align-items: center;
+          gap: 4px;
+
+          .day-solar-icon,
+          .day-wind-icon,
+          .day-humidity-icon {
+            width: 30px;
+            height: 30px;
+            object-fit: cover;
+          }
+
+          .day-solarenergy,
+          .day-windspeed,
+          .day-humidity {
+            font-size: 110%;
+          }
+        }
+      }
+
+      .day-body-mid {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+
+        .day-sunset-div,
+        .day-sunrise-div,
+        .day-prec-div,
+        .day-prob-div {
+          display: flex;
+          align-items: center;
+          gap: 4px;
+
+          .day-sunset-icon,
+          .day-sunrise-icon,
+          .day-prec-icon,
+          .day-prob-icon {
+            width: 30px;
+            height: 30px;
+            object-fit: cover;
+          }
+
+          .day-sunset,
+          .day-sunrise,
+          .day-prec,
+          .day-prob {
+            font-size: 110%;
+          }
+        }
+      }
+
+      .day-cond-div{
+        align-self: center;
+        .day-cond{
+          font-size: 180%;
+          color: var(--color-grayish);
+        }
+      }
+    }
   }
+
+  .partly-cloudy-day{
+    background: gradient(to bottom right, var(--color-cloudy), var(--color-clear));
+  }
+
+  .partly-cloudy-night{
+    background: gradient(to bottom right, rgba(136, 170, 175, 0.8), rgba(134, 170, 175, 0.9));
+  }
+
+  
 }

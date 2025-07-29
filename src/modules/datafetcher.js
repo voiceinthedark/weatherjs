@@ -80,7 +80,8 @@ class DataFetcher {
         feelsLike: jsonResponse.currentConditions.feelslike,
         datetime: jsonResponse.currentConditions.datetime,
         humidity: jsonResponse.currentConditions.humidity,
-        precipitation: jsonResponse.currentConditions.precip,
+        precipitation: jsonResponse.currentConditions.precip, // in mm
+        precipprob: jsonResponse.currentConditions.precipprob, // probability of rain
         windspeed: jsonResponse.currentConditions.windspeed,
         solarenergy: jsonResponse.currentConditions.solarenergy,
         conditions: jsonResponse.currentConditions.conditions,
