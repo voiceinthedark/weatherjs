@@ -7,6 +7,7 @@ import UIManager from "./uimanager";
 */
 class DayWeatherUI {
   #uimanager;
+  #uiBackground;
   /**
    * @constructor
    * @description Creates an instance of DayWeatherUI.
@@ -14,6 +15,7 @@ class DayWeatherUI {
    */
   constructor(uimanager) {
     this.#uimanager = uimanager;
+    this.#uiBackground = ['clear-day', 'clear-night', 'cloudy', 'rain', 'thunder', 'snow', 'snow-showers-day', 'snow-showers-night', 'thunder-rain', 'thunder-showers-day', 'thunder-showers-night', 'showers-day', 'showers-night', 'fog', 'wind', 'partly-cloudy-day', 'partly-cloudy-night', 'hail', 'rain-snow-showers-day', 'rain-snow-showers-night', 'rain-snow', 'sleet'];
   }
   /**
    * @method
@@ -88,7 +90,7 @@ class DayWeatherUI {
     /** Rain fall **/
     const precDiv = this.#uimanager.addElement('div', bodyMidDiv, 'day-prec-div');
     const precIcon = this.#uimanager.addElement('img', precDiv, 'day-prec-icon')
-    if(precIcon instanceof HTMLImageElement){
+    if (precIcon instanceof HTMLImageElement) {
       precIcon.src = this.#uimanager.icons['precipitation']
     }
     const prec = this.#uimanager.addElement('span', precDiv, 'day-prec')
@@ -96,15 +98,15 @@ class DayWeatherUI {
     /** sunrise and sunset **/
     const sunriseDiv = this.#uimanager.addElement('div', bodyMidDiv, 'day-sunrise-div')
     const sunriseIcon = this.#uimanager.addElement('img', sunriseDiv, 'day-sunrise-icon')
-    if(sunriseIcon instanceof HTMLImageElement){
+    if (sunriseIcon instanceof HTMLImageElement) {
       sunriseIcon.src = this.#uimanager.icons['sunrise'];
     }
     const sunrise = this.#uimanager.addElement('span', sunriseDiv, 'day-sunrise')
     sunrise.textContent = `${day.sunrise}`
-    
+
     const sunsetDiv = this.#uimanager.addElement('div', bodyMidDiv, 'day-sunset-div')
     const sunsetIcon = this.#uimanager.addElement('img', sunsetDiv, 'day-sunset-icon')
-    if ( sunsetIcon instanceof HTMLImageElement){
+    if (sunsetIcon instanceof HTMLImageElement) {
       sunsetIcon.src = this.#uimanager.icons['sunset']
     }
     const sunset = this.#uimanager.addElement('span', sunsetDiv, 'day-sunset')
@@ -114,6 +116,12 @@ class DayWeatherUI {
     const condDiv = this.#uimanager.addElement('div', bodyDiv, 'day-cond-div')
     const condition = this.#uimanager.addElement('span', condDiv, 'day-cond')
     condition.textContent = `${day.conditions}`
+
+    if (this.#uiBackground.includes(day.icon)) {
+      dayCard.classList.add(`${day.icon}`);
+    } else {
+      dayCard.classList.add('clear-day'); // default background if icon not found
+    }
 
 
     return dayCard;
