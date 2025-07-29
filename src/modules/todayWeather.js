@@ -9,11 +9,11 @@ class TodayWeather{
   #resolvedAddress;
   #datetime;
   #temperature;
-  #feelsLike;
+  #feelslike;
   #humidity;
   #precipitation;
   #windspeed;
-  #solarEnergy;
+  #solarenergy;
   #condition;
   #icon;
   #sunrise;
@@ -26,11 +26,11 @@ class TodayWeather{
    * @param {string} weatherData.resolvedAddress
    * @param {string} weatherData.datetime
    * @param {number} weatherData.temperature
-   * @param {number} weatherData.feelsLike
+   * @param {number} weatherData.feelslike
    * @param {number} weatherData.humidity
    * @param {number} weatherData.precipitation
    * @param {number} weatherData.windspeed
-   * @param {number} weatherData.solarEnergy
+   * @param {number} weatherData.solarenergy
    * @param {string} weatherData.condition
    * @param {string} weatherData.icon
    * @param {string} weatherData.sunrise
@@ -40,12 +40,12 @@ class TodayWeather{
     this.#address = weatherData.address;
     this.#resolvedAddress = weatherData.resolvedAddress;
     this.#temperature = weatherData.temperature
-    this.#feelsLike = weatherData.feelsLike
+    this.#feelslike = weatherData.feelslike
     this.#datetime = weatherData.datetime
     this.#humidity = weatherData.humidity
     this.#precipitation = weatherData.precipitation
     this.#windspeed = weatherData.windspeed
-    this.#solarEnergy = weatherData.solarEnergy
+    this.#solarenergy = weatherData.solarenergy
     this.#condition = weatherData.condition
     this.#icon = weatherData.icon
     this.#sunset = weatherData.sunset
@@ -61,8 +61,8 @@ class TodayWeather{
   get temperature(){
     return this.#temperature
   }
-  get feelsLike(){
-    return this.#feelsLike
+  get feelslike(){
+    return this.#feelslike
   }
   get datetime(){
     return this.#datetime
@@ -76,8 +76,8 @@ class TodayWeather{
   get windspeed(){
     return this.#windspeed
   }
-  get solarEnergy(){
-    return this.#solarEnergy
+  get solarenergy(){
+    return this.#solarenergy
   }
   get condition(){
     return this.#condition
@@ -101,3 +101,8 @@ class TodayWeather{
 
 
 }
+
+/**
+ * @module TodayWeather
+ * */
+export default TodayWeather;
