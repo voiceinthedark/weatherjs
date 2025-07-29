@@ -18,10 +18,8 @@
 @font-face {
   font-family: "Montserrat";
   src:
-    url("../assets/fonts/Montserrat/Montserrat-VariableFont_wght.ttf")
-      format("truetype"),
-    url("../assets/fonts/Montserrat/Montserrat-Italic-VariableFont_wght.ttf")
-      format("truetype");
+    url("../assets/fonts/Montserrat/Montserrat-VariableFont_wght.ttf") format("truetype"),
+    url("../assets/fonts/Montserrat/Montserrat-Italic-VariableFont_wght.ttf") format("truetype");
   font-weight: 100 900;
   font-style: normal, italic;
 }
@@ -56,4 +54,58 @@ body {
   color: var(--color-main);
   font-family: "lato", sans-serif;
   font-size: 16px;
+}
+
+.container {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .day-card {
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    box-shadow: 0px 2px 12px 2px black;
+    padding: 10px 20px;
+    border-radius: 12px;
+    height: 450px;
+
+    .day-top-div {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 4px;
+      position: relative;
+      padding-top: 25px;
+
+      .day-icon{
+        position: absolute;
+        top: -10px;
+        left:0;
+        width: 50px;
+        height: 50px;
+        object-fit: contain;
+        align-self: flex-start;
+      }
+
+      .day-temp {
+        font-size: 370%;
+        letter-spacing: 3q;
+      }
+
+      .day-feel{
+        align-self: flex-end;
+        color: var(--color-grayish);
+        padding-bottom: 10px;
+        font-size: 80%;
+      }
+      .day-date{
+        align-self: center;
+      }
+    }
+
+
+  }
 }
