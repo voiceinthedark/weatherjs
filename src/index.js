@@ -19,6 +19,7 @@ async function runApp() {
   }
 
   app.setDayCard();
+  console.log(app.getWeekData())
 }
 
 runApp();

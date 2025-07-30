@@ -178,7 +178,7 @@ body {
   }
 
   .partly-cloudy-day{
-    background: linear-gradient(to bottom right, var(--color-cloudy), var(--color-clear));
+    background: linear-gradient(to bottom right, rgba(155, 152, 154, 0.4), rgba(255, 252, 154, 0.8));
   }
 
   .partly-cloudy-night{
@@ -251,7 +251,4 @@ body {
   .rain-snow{
     background: linear-gradient(to bottom right, #a1c4fd, #c2e9fb);
   }
-  
-
-  
 }

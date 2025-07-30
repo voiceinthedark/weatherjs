@@ -13,6 +13,7 @@ class DataFetcher {
    * @member {object} #data
    * */
   #data;
+  #weekData;
   /** @member {URLSearchParams} #searchParams */
   #searchParams;
   #fullUrl;
@@ -29,6 +30,8 @@ class DataFetcher {
     this.#query = query;
     this.#apiKey = apikey;
     this.#unit = unit;
+
+    this.#weekData = [];
 
     this.setupSearchParameters();
     this.#fullUrl = new URL(`${this.#endpoint}${this.#query}?${this.#searchParams}`);
@@ -89,6 +92,30 @@ class DataFetcher {
         sunrise: jsonResponse.currentConditions.sunrise,
         sunset: jsonResponse.currentConditions.sunset,
       };
+
+      let obj;
+
+      for(let day of jsonResponse.days){
+        obj = {
+          datetime: day.datetime,
+          tempmax: day.tempmax,
+          tempmin: day.tempmin,
+          temp: day.temp,
+          feelslike: day.feelslike,
+          humidity: day.humidity,
+          precipitation: day.precip,
+          precipprob: day.precipprob,
+          windspeed: day.windspeed,
+          solarenergy: day.solarenergy,
+          sunrise: day.sunrise,
+          sunset: day.sunset,
+          conditions: day.conditions,
+          description: day.description,
+          icon: day.icon,
+        };
+        this.#weekData.push(obj);
+      }
+      
       return this.#data;
     } catch(error){
       console.error(error);
@@ -106,6 +133,15 @@ class DataFetcher {
    * */
   getData() {
     return this.#data;
+  }
+
+
+  /**
+   * @method to return the week's data
+   * @returns {object} data
+   * */
+  getWeekData(){
+    return this.#weekData;
   }
 }
 

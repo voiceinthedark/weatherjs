@@ -11,6 +11,7 @@ import allIcons from "../assets/icons/allicons";
 class AppController {
   #dataFetcher;
   #data;
+  #weekData;
   #uimanager;
 
   /**
@@ -33,9 +34,11 @@ class AppController {
   async initialize() {
     try {
       this.#data = await this.#dataFetcher.collect();
+      this.#weekData = await this.#dataFetcher.getWeekData();
     } catch (error) {
       console.error("Error fetching initial data:", error);
       this.#data = undefined; // Ensure #data is in a known state on error
+      this.#weekData = undefined;
     }
   }
 
@@ -44,6 +47,10 @@ class AppController {
    * */
   getData() {
     return this.#data;
+  }
+
+  getWeekData(){
+    return this.#weekData;
   }
 
   setDayCard() {

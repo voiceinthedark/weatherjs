@@ -12,6 +12,7 @@ class TodayWeather{
   #feelslike;
   #humidity;
   #precipitation;
+  #precipitationProbability;
   #windspeed;
   #solarenergy;
   #condition;
@@ -29,6 +30,7 @@ class TodayWeather{
    * @param {number} weatherData.feelslike
    * @param {number} weatherData.humidity
    * @param {number} weatherData.precipitation
+   * @param {number} weatherData.precipprob
    * @param {number} weatherData.windspeed
    * @param {number} weatherData.solarenergy
    * @param {string} weatherData.condition
@@ -44,6 +46,7 @@ class TodayWeather{
     this.#datetime = weatherData.datetime
     this.#humidity = weatherData.humidity
     this.#precipitation = weatherData.precipitation
+    this.#precipitationProbability = weatherData.precipprob;
     this.#windspeed = weatherData.windspeed
     this.#solarenergy = weatherData.solarenergy
     this.#condition = weatherData.condition
@@ -72,6 +75,9 @@ class TodayWeather{
   }
   get precipitation(){
     return this.#precipitation
+  }
+  get precipitationProbability(){
+    return this.#precipitationProbability;
   }
   get windspeed(){
     return this.#windspeed
