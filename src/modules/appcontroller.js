@@ -2,7 +2,9 @@
 import DataFetcher from "./datafetcher";
 import DayWeatherUI from "./UI/dayweatherui";
 import UIManager from "./UI/uimanager";
+import WeekDaysWeather from "./weekdaysweather";
 import allIcons from "../assets/icons/allicons";
+import TodayWeather from "./todayWeather";
 
 /**
  * @class
@@ -12,6 +14,7 @@ class AppController {
   #dataFetcher;
   #data;
   #weekData;
+  #weekDays;
   #uimanager;
 
   /**
@@ -35,6 +38,8 @@ class AppController {
     try {
       this.#data = await this.#dataFetcher.collect();
       this.#weekData = await this.#dataFetcher.getWeekData();
+      const week = new WeekDaysWeather(this.#weekData)
+      this.#weekDays = week.getDays();
     } catch (error) {
       console.error("Error fetching initial data:", error);
       this.#data = undefined; // Ensure #data is in a known state on error
@@ -49,10 +54,25 @@ class AppController {
     return this.#data;
   }
 
+  /**
+   * @method to return the wehater data unsanitized
+   * @returns {Array<object>} weekData
+   * */
   getWeekData(){
     return this.#weekData;
   }
 
+  /**
+   * @method to return the forecast week data as Today's objects
+   * @returns {Array<TodayWeather>} weekDays
+   * */
+  getWeek(){
+    return this.#weekDays;
+  }
+
+  /**
+   * @method to set day card on the ui
+   * */
   setDayCard() {
     if (!this.#data) {
       console.error("No data available to render day card.");
@@ -69,8 +89,6 @@ class AppController {
     } else {
       console.error("Container for day card not found.");
     }
-
-
   }
 
 

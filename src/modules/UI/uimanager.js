@@ -1,5 +1,7 @@
 // @ts-check
 
+
+
 class UIManager {
   #container;
   #icons;
@@ -37,9 +39,13 @@ class UIManager {
   }
 
   /**
+   * @typedef {[Node, number]} NodeWithCount
+   */
+
+  /**
    * @param {Node} parent - parent element of the removed child
    * @param {Node} element - the Element to be removed
-   * @returns {[Node, number] | number} - returns an array containing the removed element and parent childs count
+   * @returns {NodeWithCount|number} - returns an array containing the removed element and parent childs count
    * */
   removeElement(parent, element) {
     if (parent.childNodes.length === 0) {

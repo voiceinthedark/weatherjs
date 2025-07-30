@@ -131,6 +131,10 @@ class DayWeatherUI {
 
     return dayCard;
   }
+
+  getBackgrounds(){
+    return this.#uiBackground;
+  }
 }
 
 /** @module DayWeatherUI */

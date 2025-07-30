@@ -20,6 +20,7 @@ async function runApp() {
 
   app.setDayCard();
   console.log(app.getWeekData())
+  console.log(app.getWeek())
 }
 
 runApp();

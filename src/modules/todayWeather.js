@@ -8,6 +8,8 @@ class TodayWeather{
   #address;
   #resolvedAddress;
   #datetime;
+  #tempMin;
+  #tempMax;
   #temperature;
   #feelslike;
   #humidity;
@@ -15,7 +17,8 @@ class TodayWeather{
   #precipitationProbability;
   #windspeed;
   #solarenergy;
-  #condition;
+  #conditions;
+  #description;
   #icon;
   #sunrise;
   #sunset;
@@ -26,14 +29,18 @@ class TodayWeather{
    * @param {string} weatherData.address
    * @param {string} weatherData.resolvedAddress
    * @param {string} weatherData.datetime
-   * @param {number} weatherData.temperature
+   * @param {number | null} weatherData.tempmin
+   * @param {number | null} weatherData.tempmax 
+   * @param {number | null | undefined} weatherData.temperature
+   * @param {number | null | undefined} weatherData.temp
    * @param {number} weatherData.feelslike
    * @param {number} weatherData.humidity
    * @param {number} weatherData.precipitation
    * @param {number} weatherData.precipprob
    * @param {number} weatherData.windspeed
    * @param {number} weatherData.solarenergy
-   * @param {string} weatherData.condition
+   * @param {string | null} weatherData.description
+   * @param {string} weatherData.conditions
    * @param {string} weatherData.icon
    * @param {string} weatherData.sunrise
    * @param {string} weatherData.sunset
@@ -41,7 +48,7 @@ class TodayWeather{
   constructor(weatherData){
     this.#address = weatherData.address;
     this.#resolvedAddress = weatherData.resolvedAddress;
-    this.#temperature = weatherData.temperature
+    this.#temperature = weatherData.temperature ?? weatherData.temp // temperature on current, but temp on forecast (?!)
     this.#feelslike = weatherData.feelslike
     this.#datetime = weatherData.datetime
     this.#humidity = weatherData.humidity
@@ -49,10 +56,14 @@ class TodayWeather{
     this.#precipitationProbability = weatherData.precipprob;
     this.#windspeed = weatherData.windspeed
     this.#solarenergy = weatherData.solarenergy
-    this.#condition = weatherData.condition
+    this.#conditions = weatherData.conditions
     this.#icon = weatherData.icon
     this.#sunset = weatherData.sunset
     this.#sunrise = weatherData.sunrise
+
+    this.#tempMin = weatherData.tempmin ?? 30;
+    this.#tempMax = weatherData.tempmax ?? 30;
+    this.#description = weatherData.description ?? '';
   }
 
   get address(){
@@ -85,8 +96,8 @@ class TodayWeather{
   get solarenergy(){
     return this.#solarenergy
   }
-  get condition(){
-    return this.#condition
+  get conditions(){
+    return this.#conditions
   }
   get sunrise(){
     return this.#sunrise
@@ -98,13 +109,23 @@ class TodayWeather{
   get icon(){
     return this.#icon
   }
+
+  get tempmin(){
+    return this.#tempMin;
+  }
+  get tempmax(){
+    return this.#tempMax;
+  }
+  get description(){
+    return this.#description;
+  }
+
   /**
    * @param {string} val 
    * */
   set icon(val){
     this.#icon = val
   }
-
 
 }
 

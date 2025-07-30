@@ -197,6 +197,55 @@ body {
     }
   }
 
+  .week-frame{
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+
+    .week-date{
+      font-size: 140%;
+    }
+
+    .week-card{
+      display: flex;
+      flex-direction: column;
+
+      .week-top-div{
+        display: flex;
+        position: relative;
+
+        .week-top-left-div{
+          display: flex;
+        }
+
+        .week-top-right-div{
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+        }
+
+      }
+
+      .week-mid-div{
+        display: flex;
+
+        .week-mid-sun-div{
+          display: flex;
+        }
+
+        .week-mid-set-div{
+          display: flex;
+        }
+      }
+
+      .week-bot-div{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+
   .partly-cloudy-day {
     background: linear-gradient(to bottom right, rgba(155, 152, 154, 0.4), rgba(255, 252, 154, 0.8));
   }

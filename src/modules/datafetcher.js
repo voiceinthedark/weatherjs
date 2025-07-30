@@ -113,6 +113,7 @@ class DataFetcher {
           description: day.description,
           icon: day.icon,
         };
+        obj = {address: this.#data.address, resolvedAddress: this.#data.resolvedAddress, ...obj};
         this.#weekData.push(obj);
       }
       
