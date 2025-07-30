@@ -27,6 +27,9 @@ import rainProbabilityIcon from './icons8-rain-sensor-96.png'
 import precipitationIcon from './icons8-rainmeter-96.png'
 import sunriseIcon from './icons8-sunrise-96.png'
 import sunsetIcon from './icons8-sunset-96.png'
+import tempmaxIcon from './icons8-warm-96.png'
+import tempminIcon from './icons8-cold-96.png'
+import tempfeelsIcon from './icons8-wave-96.png'
 
 const allIcons = {
   humidity: humidityIcon,
@@ -36,6 +39,9 @@ const allIcons = {
   precipitation: precipitationIcon,
   sunrise: sunriseIcon,
   sunset: sunsetIcon,
+  tempmax: tempmaxIcon,
+  tempmin: tempminIcon,
+  tempfeels: tempfeelsIcon,
   'clear-day': clearDayIcon,
   'clear-night': clearNightIcon,
   cloudy: cloudyIcon,

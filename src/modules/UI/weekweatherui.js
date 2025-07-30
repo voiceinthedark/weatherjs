@@ -56,11 +56,26 @@ class WeeKWeatherUI {
     const temperature = this.#uimanager.addElement('span', weekTopLeftDiv, 'week-temp')
     temperature.textContent = `${day.temperature}°C`
     const weekTopRightDiv = this.#uimanager.addElement('div', weekTopDiv, 'week-top-right-div')
-    const tempMax = this.#uimanager.addElement('span', weekTopRightDiv, 'week-temp-max')
+    const tempmaxDiv = this.#uimanager.addElement('div', weekTopRightDiv, 'week-temp-max-div')
+    const tempMaxIcon = this.#uimanager.addElement('img', tempmaxDiv, 'week-temp-max-icon')
+    if(tempMaxIcon instanceof HTMLImageElement){
+      tempMaxIcon.src = this.#uimanager.icons['tempmax']
+    }
+    const tempMax = this.#uimanager.addElement('span', tempmaxDiv, 'week-temp-max')
     tempMax.textContent = `${day.tempmax}°C`
-    const tempMin = this.#uimanager.addElement('span', weekTopRightDiv, 'week-temp-min')
+    const tempminDiv = this.#uimanager.addElement('div', weekTopRightDiv, 'week-temp-min-div')
+    const tempMinIcon = this.#uimanager.addElement('img', tempminDiv, 'week-temp-min-icon')
+    if(tempMinIcon instanceof HTMLImageElement){
+      tempMinIcon.src = this.#uimanager.icons['tempmin']
+    }
+    const tempMin = this.#uimanager.addElement('span', tempminDiv, 'week-temp-min')
     tempMin.textContent = `${day.tempmin}°C`
-    const feels = this.#uimanager.addElement('span', weekTopRightDiv, 'week-feels')
+    const feelsDiv = this.#uimanager.addElement('div', weekTopRightDiv, 'week-feels-div')
+    const feelsIcon =this.#uimanager.addElement('img', feelsDiv, 'week-feels-icon')
+    if(feelsIcon instanceof HTMLImageElement){
+      feelsIcon.src = this.#uimanager.icons['tempfeels']
+    }
+    const feels = this.#uimanager.addElement('span', feelsDiv, 'week-feels')
     feels.textContent = `${day.feelslike}°C`
 
     /** MIDDLE SECTION **/
