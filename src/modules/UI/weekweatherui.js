@@ -2,6 +2,7 @@
 
 import TodayWeather from "../todayWeather";
 import UIManager from "./uimanager";
+import { format } from "date-fns";
 
 /**
  * @class WeeKWeatherUI
@@ -42,7 +43,7 @@ class WeeKWeatherUI {
     const weekDayFrame = document.createElement('div');
     weekDayFrame.classList.add('week-frame')
     const date = this.#uimanager.addElement('span', weekDayFrame, 'week-date')
-    date.textContent = day.datetime;
+    date.textContent = format(day.datetime, 'eeee do MMM');
     const weekDayCard = this.#uimanager.addElement('div', weekDayFrame, 'week-card')
 
     /** TOP SECTION **/
