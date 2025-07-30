@@ -65,20 +65,38 @@ class WeeKWeatherUI {
 
     /** MIDDLE SECTION **/
     const weekMidDiv = this.#uimanager.addElement('div', weekDayCard, 'week-mid-div')
-    const sunriseDiv = this.#uimanager.addElement('div', weekMidDiv, 'week-mid-sun-div')
+    const weekMidLeftDiv = this.#uimanager.addElement('div', weekMidDiv, 'week-mid-left-div')
+    const sunriseDiv = this.#uimanager.addElement('div', weekMidLeftDiv, 'week-mid-sun-div')
     const sunriseIcon = this.#uimanager.addElement('img', sunriseDiv, 'week-sunrise-icon')
     if (sunriseIcon instanceof HTMLImageElement) {
       sunriseIcon.src = this.#uimanager.icons['sunrise']
     }
     const sunrise = this.#uimanager.addElement('span', sunriseDiv, 'week-sunrise')
     sunrise.textContent = day.sunrise;
-    const sunsetDiv = this.#uimanager.addElement('div', weekMidDiv, 'week-mid-set-div')
+    const sunsetDiv = this.#uimanager.addElement('div', weekMidLeftDiv, 'week-mid-set-div')
     const sunsetIcon = this.#uimanager.addElement('img', sunsetDiv, 'week-sunset-icon')
     if (sunsetIcon instanceof HTMLImageElement) {
       sunsetIcon.src = this.#uimanager.icons['sunset']
     }
     const sunset = this.#uimanager.addElement('span', sunsetDiv, 'week-sunset')
     sunset.textContent = day.sunset;
+
+    const weekMidRightDiv = this.#uimanager.addElement('div', weekMidDiv, 'week-mid-right-div')
+    const humidityDiv = this.#uimanager.addElement('div', weekMidRightDiv, 'week-humidity-div')
+    const humidityIcon = this.#uimanager.addElement('img', humidityDiv, 'week-humidity-icon')
+    if(humidityIcon instanceof HTMLImageElement){
+      humidityIcon.src = this.#uimanager.icons['humidity']
+    }
+    const humidity = this.#uimanager.addElement('span', humidityDiv, 'week-humidity')
+    humidity.textContent = `${day.humidity}%`
+
+    const precipDiv = this.#uimanager.addElement('div', weekMidRightDiv, 'week-precip-div')
+    const precipIcon = this.#uimanager.addElement('img', precipDiv, 'week-precip-icon')
+    if(precipIcon instanceof HTMLImageElement){
+      precipIcon.src = this.#uimanager.icons['precipitation']
+    }
+    const precip = this.#uimanager.addElement('span', precipDiv, 'week-precip')
+    precip.textContent = `${day.precipitationProbability}%`
 
     /** BOTTOM SECTION **/
     const weekBotDiv = this.#uimanager.addElement('div', weekDayCard, 'week-bot-div')

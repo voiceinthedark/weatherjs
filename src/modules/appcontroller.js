@@ -13,8 +13,11 @@ import WeeKWeatherUI from "./UI/weekweatherui";
  * */
 class AppController {
   #dataFetcher;
+  /** @type {Object} */
   #data;
+  /** @type {Object} */
   #weekData;
+  /** @type {Array<TodayWeather>} */
   #weekDays;
   #uimanager;
   #container;
@@ -61,7 +64,7 @@ class AppController {
    * @method to return the wehater data unsanitized
    * @returns {Array<object>} weekData
    * */
-  getWeekData(){
+  getWeekData() {
     return this.#weekData;
   }
 
@@ -69,7 +72,7 @@ class AppController {
    * @method to return the forecast week data as Today's objects
    * @returns {Array<TodayWeather>} weekDays
    * */
-  getWeek(){
+  getWeek() {
     return this.#weekDays;
   }
 
@@ -92,20 +95,21 @@ class AppController {
     }
   }
 
-  setWeekList(){
-    if(!this.#weekDays){
+  setWeekList() {
+    if (!this.#weekDays) {
       console.error('No data available to render the forecast');
       return;
     }
 
     const weekWeatherUI = new WeeKWeatherUI(this.#uimanager);
-    const weekForecast = weekWeatherUI.renderWeekCards(this.getWeek());
+    const weekForecast = weekWeatherUI.
+      renderWeekCards(this.getWeek().slice(0, -1));
 
-    if(this.#container){
+    if (this.#container) {
       this.#container.appendChild(weekForecast)
-    } else{
+    } else {
       console.error('Container not found');
-      
+
     }
 
   }

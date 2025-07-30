@@ -102,15 +102,24 @@ body {
       .day-top-div-right {
         display: flex;
         flex-direction: column;
+        position: relative;
 
-        .day-address {
-          font-size: 140%;
-          font-weight: bold;
+        .day-address-div {
+          display: flex;
+          flex-direction: column;
+          margin-bottom: 10px;
+
+          .day-address {
+            font-size: 140%;
+            font-weight: bold;
+          }
+
+          .day-resolved-address {
+            font-size: 90%;
+          }
         }
 
-        .day-resolved-address {
-          font-size: 90%;
-        }
+
 
         .day-date {
           align-self: flex-end;
@@ -200,16 +209,16 @@ body {
 
   .week-list {
     display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    row-gap: 12px;
-    column-gap: 4px;
+    grid-template-columns: repeat(7, 1fr);
+    row-gap: 24px;
+    column-gap: 12px;
     height: 400px;
     margin-top: 50px;
 
     .week-frame {
       display: flex;
       flex-direction: column;
-        height: inherit;
+      height: inherit;
 
       .week-date {
         font-size: 140%;
@@ -224,7 +233,8 @@ body {
         width: 200px;
         height: inherit;
         border: 1px solid black;
-        padding: 10px 5px; 
+        border-radius: 20px;
+        padding: 10px 5px;
 
         .week-top-div {
           display: flex;
@@ -255,7 +265,7 @@ body {
 
             .week-temp-max,
             .week-temp-min,
-            .week-feels{
+            .week-feels {
               color: #101010;
               font-size: 80%;
             }
@@ -264,31 +274,61 @@ body {
 
         .week-mid-div {
           display: flex;
-          flex-direction: column;
           justify-content: space-between;
           align-items: center;
 
-          .week-mid-sun-div {
+          .week-mid-left-div {
             display: flex;
-            justify-content: center;
-            align-items: center;
+            flex-direction: column;
+            align-items: flex-start;
 
-            .week-sunrise-icon {
-              width: 24px;
-              height: 24px;
+            .week-mid-sun-div {
+              display: flex;
+
+              .week-sunrise-icon {
+                width: 24px;
+                height: 24px;
+              }
+            }
+
+            .week-mid-set-div {
+              display: flex;
+              align-items: center;
+
+              .week-sunset-icon {
+                width: 24px;
+                height: 24px;
+              }
             }
           }
 
-          .week-mid-set-div {
+          .week-mid-right-div {
             display: flex;
-            align-items: center;
+            flex-direction: column;
+            align-items: flex-end;
 
-            .week-sunset-icon {
-              width: 24px;
-              height: 24px;
+            .week-humidity-div {
+              display: flex;
+
+              .week-humidity-icon {
+                width: 24px;
+                height: 24px;
+              }
             }
+
+            .week-precip-div {
+              display: flex;
+
+              .week-precip-icon {
+                width: 24px;
+                height: 24px;
+              }
+            }
+
           }
+
         }
+
 
         .week-bot-div {
           width: 50%;

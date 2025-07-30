@@ -43,9 +43,11 @@ class DayWeatherUI {
     const feelslike = this.#uimanager.addElement('span', topDivLeft, 'day-feel');
     feelslike.textContent = `Feels ${day.feelsLike}°C`
     const topDivRight = this.#uimanager.addElement('div', topDiv, 'day-top-div-right')
-    const address = this.#uimanager.addElement('span', topDivRight, 'day-address')
+
+    const addressDiv = this.#uimanager.addElement('div', topDivRight, 'day-address-div')
+    const address = this.#uimanager.addElement('span', addressDiv, 'day-address')
     address.textContent = `${day.address}`;
-    const resolvedAddress = this.#uimanager.addElement('span', topDivRight, 'day-resolved-address')
+    const resolvedAddress = this.#uimanager.addElement('span', addressDiv, 'day-resolved-address')
     resolvedAddress.textContent = `${day.resolvedAddress}`;
     const date = this.#uimanager.addElement('span', topDivRight, 'day-date');
     date.textContent = day.datetime;

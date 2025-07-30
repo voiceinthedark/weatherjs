@@ -29,6 +29,10 @@ class WeekDaysWeather {
     }
   }
 
+  /**
+   * @method to return an array of TodayWeather
+   * @returns {Array<TodayWeather>}
+   * */
   getDays() {
     return this.#weekDays;
   }
