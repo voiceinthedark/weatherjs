@@ -103,18 +103,19 @@ body {
         display: flex;
         flex-direction: column;
 
-        .day-address{
+        .day-address {
           font-size: 140%;
           font-weight: bold;
         }
 
-        .day-resolved-address{
+        .day-resolved-address {
           font-size: 90%;
         }
-        .day-date{
+
+        .day-date {
           align-self: flex-end;
         }
-        
+
       }
 
     }
@@ -197,54 +198,112 @@ body {
     }
   }
 
-  .week-frame{
-    display: flex;
-    flex-direction: column;
-    width: 300px;
+  .week-list {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    row-gap: 12px;
+    column-gap: 4px;
+    height: 400px;
+    margin-top: 50px;
 
-    .week-date{
-      font-size: 140%;
-    }
-
-    .week-card{
+    .week-frame {
       display: flex;
       flex-direction: column;
+        height: inherit;
 
-      .week-top-div{
+      .week-date {
+        font-size: 140%;
+        text-align: center;
+      }
+
+      .week-card {
         display: flex;
-        position: relative;
+        flex-direction: column;
+        height: inherit;
+        justify-content: space-between;
+        width: 200px;
+        height: inherit;
+        border: 1px solid black;
+        padding: 10px 5px; 
 
-        .week-top-left-div{
+        .week-top-div {
           display: flex;
+          justify-content: space-between;
+          position: relative;
+
+          .week-top-left-div {
+            display: flex;
+            position: relative;
+
+            .week-icon {
+              width: 44px;
+              height: 44px;
+              position: absolute;
+              top: 40px;
+              left: 0;
+            }
+
+            .week-temp {
+              font-size: 150%;
+            }
+          }
+
+          .week-top-right-div {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+
+            .week-temp-max,
+            .week-temp-min,
+            .week-feels{
+              color: #101010;
+              font-size: 80%;
+            }
+          }
         }
 
-        .week-top-right-div{
+        .week-mid-div {
           display: flex;
           flex-direction: column;
-          justify-content: flex-end;
+          justify-content: space-between;
+          align-items: center;
+
+          .week-mid-sun-div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .week-sunrise-icon {
+              width: 24px;
+              height: 24px;
+            }
+          }
+
+          .week-mid-set-div {
+            display: flex;
+            align-items: center;
+
+            .week-sunset-icon {
+              width: 24px;
+              height: 24px;
+            }
+          }
         }
 
-      }
+        .week-bot-div {
+          width: 50%;
+          align-self: center;
 
-      .week-mid-div{
-        display: flex;
-
-        .week-mid-sun-div{
-          display: flex;
+          .week-description {
+            font-size: 90%;
+            color: #101010;
+            text-wrap: wrap;
+          }
         }
-
-        .week-mid-set-div{
-          display: flex;
-        }
-      }
-
-      .week-bot-div{
-        display: flex;
-        justify-content: center;
-        align-items: center;
       }
     }
   }
+
 
   .partly-cloudy-day {
     background: linear-gradient(to bottom right, rgba(155, 152, 154, 0.4), rgba(255, 252, 154, 0.8));
@@ -255,7 +314,7 @@ body {
   }
 
   .clear-day {
-    background: linear-gradient(to bottom right, #f0f0f0, #ffffff);
+    background: linear-gradient(to bottom right, #10a0f0, #5fcfff);
   }
 
   .clear-night {

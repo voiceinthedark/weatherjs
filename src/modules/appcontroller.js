@@ -5,6 +5,7 @@ import UIManager from "./UI/uimanager";
 import WeekDaysWeather from "./weekdaysweather";
 import allIcons from "../assets/icons/allicons";
 import TodayWeather from "./todayWeather";
+import WeeKWeatherUI from "./UI/weekweatherui";
 
 /**
  * @class
@@ -16,6 +17,7 @@ class AppController {
   #weekData;
   #weekDays;
   #uimanager;
+  #container;
 
   /**
    * @param {HTMLElement} appContainer 
@@ -27,6 +29,7 @@ class AppController {
       "7WXVPBFAC4BMBGSURKG4AJBTP",
       "metric");
     this.#uimanager = new UIManager(appContainer, allIcons);
+    this.#container = appContainer;
   }
 
   /**
@@ -82,13 +85,29 @@ class AppController {
     const dayWeatherUI = new DayWeatherUI(this.#uimanager);
     const dayCard = dayWeatherUI.renderDayCard(this.#data);
 
-    // Assuming there's a container in the HTML to append the day card
-    const container = document.getElementById('container');
-    if (container) {
-      container.appendChild(dayCard);
+    if (this.#container) {
+      this.#container.appendChild(dayCard);
     } else {
       console.error("Container for day card not found.");
     }
+  }
+
+  setWeekList(){
+    if(!this.#weekDays){
+      console.error('No data available to render the forecast');
+      return;
+    }
+
+    const weekWeatherUI = new WeeKWeatherUI(this.#uimanager);
+    const weekForecast = weekWeatherUI.renderWeekCards(this.getWeek());
+
+    if(this.#container){
+      this.#container.appendChild(weekForecast)
+    } else{
+      console.error('Container not found');
+      
+    }
+
   }
 
 
