@@ -2,7 +2,7 @@
 
 import TodayWeather from "../todayWeather";
 import UIManager from "./uimanager";
-import { format } from "date-fns";
+import { format, parse } from "date-fns";
 
 /**
  * @class WeeKWeatherUI
@@ -87,14 +87,14 @@ class WeeKWeatherUI {
       sunriseIcon.src = this.#uimanager.icons['sunrise']
     }
     const sunrise = this.#uimanager.addElement('span', sunriseDiv, 'week-sunrise')
-    sunrise.textContent = day.sunrise;
+    sunrise.textContent = format(parse(day.sunrise, 'HH:mm:ss', day.datetime), 'kk:mm');
     const sunsetDiv = this.#uimanager.addElement('div', weekMidLeftDiv, 'week-mid-set-div')
     const sunsetIcon = this.#uimanager.addElement('img', sunsetDiv, 'week-sunset-icon')
     if (sunsetIcon instanceof HTMLImageElement) {
       sunsetIcon.src = this.#uimanager.icons['sunset']
     }
     const sunset = this.#uimanager.addElement('span', sunsetDiv, 'week-sunset')
-    sunset.textContent = day.sunset;
+    sunset.textContent = format(parse(day.sunset, 'HH:mm:ss', day.datetime), 'kk:mm');
 
     const weekMidRightDiv = this.#uimanager.addElement('div', weekMidDiv, 'week-mid-right-div')
     const humidityDiv = this.#uimanager.addElement('div', weekMidRightDiv, 'week-humidity-div')

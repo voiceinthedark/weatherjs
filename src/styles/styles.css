@@ -83,6 +83,7 @@ body {
     padding: 10px 20px;
     border-radius: 12px;
     height: 350px;
+    margin-top: 40px;
 
     .day-top-div {
       display: flex;
@@ -232,7 +233,7 @@ body {
     row-gap: 24px;
     column-gap: 12px;
     height: 400px;
-    margin-top: 50px;
+    margin-top: 100px;
 
     .week-frame {
       display: flex;
@@ -242,6 +243,7 @@ body {
       .week-date {
         font-size: 140%;
         text-align: center;
+        margin-bottom: 16px;
       }
 
       .week-card {
