@@ -42,7 +42,12 @@ class DayWeatherUI {
     temperature.textContent = `${day.temperature}°C`;
     const feelslike = this.#uimanager.addElement('span', topDivLeft, 'day-feel');
     feelslike.textContent = `Feels ${day.feelsLike}°C`
-    const date = this.#uimanager.addElement('span', topDiv, 'day-date');
+    const topDivRight = this.#uimanager.addElement('div', topDiv, 'day-top-div-right')
+    const address = this.#uimanager.addElement('span', topDivRight, 'day-address')
+    address.textContent = `${day.address}`;
+    const resolvedAddress = this.#uimanager.addElement('span', topDivRight, 'day-resolved-address')
+    resolvedAddress.textContent = `${day.resolvedAddress}`;
+    const date = this.#uimanager.addElement('span', topDivRight, 'day-date');
     date.textContent = day.datetime;
 
     /** Day Card Body **/
