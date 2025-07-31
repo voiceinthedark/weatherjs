@@ -84,7 +84,7 @@ class AppController {
     const searchBar = new SearchBarUI(this.#uimanager).
       renderSearchBar(
         this.handleSearchButton.bind(this),
-        () => { });
+        this.handleLocationButton.bind(this));
     header?.appendChild(searchBar)
   }
 
@@ -146,7 +146,39 @@ class AppController {
       this.#uimanager.clearElement(this.#container);
       this.setDayCard()
       this.setWeekList()
+      this.setupFooter()
     }
+  }
+
+  /**
+   * @method to handle geolocation button
+   * */
+  async handleLocationButton(){
+    console.log("Location button clicked, fetching current location data...");
+    navigator.geolocation.getCurrentPosition(
+      async (position) => {
+        const { latitude, longitude } = position.coords;
+        try {
+          await this.#dataFetcher.setQuery(`${latitude},${longitude}`);
+          console.log(this.#dataFetcher.query)
+
+          this.#data = this.#dataFetcher.getData();
+          this.#weekData = this.#dataFetcher.getWeekData();
+          const week = new WeekDaysWeather(this.#weekData);
+          this.#weekDays = week.getDays();
+
+          this.#uimanager.clearElement(this.#container);
+          this.setDayCard();
+          this.setWeekList();
+          this.setupFooter()
+        } catch (error) {
+          console.error("Error fetching data for current location:", error);
+        }
+      },
+      (error) => {
+        console.error("Geolocation error:", error);
+      },
+    );
   }
 
   /**

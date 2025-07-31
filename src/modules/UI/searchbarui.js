@@ -49,6 +49,13 @@ class SearchBarUI {
       }
     });
 
+    locateButton.addEventListener('click', (e) => {
+      e.preventDefault()
+      if(typeof onLocationClick === 'function'){
+        onLocationClick();
+      }
+    });
+
     return searchbarDiv;
   }
 }
