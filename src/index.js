@@ -17,6 +17,7 @@ async function runApp() {
     // You can now safely use the data
   } else {
     console.log("Data could not be fetched or is not available.");
+    app.setEmptyResult()
   }
 
   app.setSearchBar()

@@ -30,7 +30,7 @@ class AppController {
   constructor(appContainer) {
     this.#dataFetcher = new DataFetcher(
       "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/",
-      "Tyre",
+      "paris",
       "7WXVPBFAC4BMBGSURKG4AJBTP",
       "metric",
     );
@@ -86,6 +86,11 @@ class AppController {
         this.handleSearchButton.bind(this),
         () => { });
     header?.appendChild(searchBar)
+  }
+
+  setEmptyResult(){
+    const empty = this.#uimanager.addElement('h1', this.#container, 'empty-container')
+    empty.textContent = 'No Data found, retry again'
   }
 
   /**
