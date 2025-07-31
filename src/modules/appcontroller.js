@@ -6,6 +6,7 @@ import WeekDaysWeather from "./weekdaysweather";
 import allIcons from "../assets/icons/allicons";
 import TodayWeather from "./todayWeather";
 import WeeKWeatherUI from "./UI/weekweatherui";
+import SearchBarUI from "./UI/searchbarui";
 
 /**
  * @class
@@ -23,28 +24,29 @@ class AppController {
   #container;
 
   /**
-   * @param {HTMLElement} appContainer 
+   * @param {HTMLElement} appContainer
    * */
   constructor(appContainer) {
     this.#dataFetcher = new DataFetcher(
       "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/",
-      'Chehour',
+      "Chehour",
       "7WXVPBFAC4BMBGSURKG4AJBTP",
-      "metric");
+      "metric",
+    );
     this.#uimanager = new UIManager(appContainer, allIcons);
     this.#container = appContainer;
   }
 
   /**
-     * @method to initialize the AppController and fetch initial data
-     * @async
-     * @returns {Promise<void>}
-     * */
+   * @method to initialize the AppController and fetch initial data
+   * @async
+   * @returns {Promise<void>}
+   * */
   async initialize() {
     try {
       this.#data = await this.#dataFetcher.collect();
       this.#weekData = await this.#dataFetcher.getWeekData();
-      const week = new WeekDaysWeather(this.#weekData)
+      const week = new WeekDaysWeather(this.#weekData);
       this.#weekDays = week.getDays();
     } catch (error) {
       console.error("Error fetching initial data:", error);
@@ -76,6 +78,15 @@ class AppController {
     return this.#weekDays;
   }
 
+  setSearchBar() {
+    const header = document.getElementById('header');
+    const searchBar = new SearchBarUI(this.#uimanager).
+      renderSearchBar(
+        this.handleSearchButton.bind(this),
+        () => { });
+    header?.appendChild(searchBar)
+  }
+
   /**
    * @method to set day card on the ui
    * */
@@ -97,24 +108,40 @@ class AppController {
 
   setWeekList() {
     if (!this.#weekDays) {
-      console.error('No data available to render the forecast');
+      console.error("No data available to render the forecast");
       return;
     }
 
     const weekWeatherUI = new WeeKWeatherUI(this.#uimanager);
-    const weekForecast = weekWeatherUI.
-      renderWeekCards(this.getWeek().slice(0, -1));
+    const weekForecast = weekWeatherUI.renderWeekCards(
+      this.getWeek().slice(0, -1),
+    );
 
     if (this.#container) {
-      this.#container.appendChild(weekForecast)
+      this.#container.appendChild(weekForecast);
     } else {
-      console.error('Container not found');
-
+      console.error("Container not found");
     }
-
   }
 
+  /**
+   * @method to handle the search bar value
+   * @param {string} value 
+   * */
+  async handleSearchButton(value) {
+    if (value !== '' && value !== null) {
+      console.log(`searching for ${value} in appcontroller`)
+      await this.#dataFetcher.setQuery(value)
+      this.#data = this.#dataFetcher.getData()
+      this.#weekData = this.#dataFetcher.getWeekData()
+      const week = new WeekDaysWeather(this.#weekData)
+      this.#weekDays = week.getDays()
 
+      this.#uimanager.clearElement(this.#container);
+      this.setDayCard()
+      this.setWeekList()
+    }
+  }
 }
 
 /**

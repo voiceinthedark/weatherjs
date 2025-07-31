@@ -11,7 +11,7 @@ class WeekDaysWeather {
 
   /**
    * @constructor
-   * @param {Array<object>} weekDaysData 
+   * @param {Array<object>} weekDaysData
    * */
   constructor(weekDaysData) {
     this.#weekDaysData = weekDaysData;

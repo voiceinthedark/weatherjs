@@ -19,12 +19,12 @@ async function runApp() {
     console.log("Data could not be fetched or is not available.");
   }
 
+  app.setSearchBar()
   app.setDayCard();
   // console.log(app.getWeekData())
   // console.log(app.getWeek())
   //
-  app.setWeekList()
+  app.setWeekList();
 }
 
 runApp();
-

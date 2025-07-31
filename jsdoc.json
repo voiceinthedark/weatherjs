@@ -3,7 +3,7 @@
   "recurseDepth": 10,
   "tags": {
     "allowUnknownTags": true,
-    "dictionaries": ["jsdoc","closure"]
+    "dictionaries": ["jsdoc", "closure"]
   },
   "source": {
     "include": ["src"],
@@ -18,5 +18,5 @@
     "destination": "./jsdoc",
     "recurse": true,
     "readme": "./README.md"
-  } 
+  }
 }

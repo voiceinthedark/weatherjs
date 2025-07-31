@@ -1,13 +1,11 @@
 // @ts-check
 
-
-
 class UIManager {
   #container;
   #icons;
   /**
    * @param {Node} appContainer - Node element for the application container
-   * @param {Object<string, string>} icons - object containing icon names as keys and values as the path 
+   * @param {Object<string, string>} icons - object containing icon names as keys and values as the path
    * */
   constructor(appContainer, icons) {
     this.#container = appContainer;
@@ -72,8 +70,8 @@ class UIManager {
     return this.#container;
   }
   /**
-     * @returns {Object<string, string>} The collection of loaded icons.
-     */
+   * @returns {Object<string, string>} The collection of loaded icons.
+   */
   get icons() {
     return this.#icons;
   }

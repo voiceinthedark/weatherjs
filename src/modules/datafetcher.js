@@ -10,11 +10,11 @@ class DataFetcher {
   #apiKey;
   #unit;
   /**
-   * @member {object} #data
+   * @type {object} #data
    * */
   #data;
   #weekData;
-  /** @member {URLSearchParams} #searchParams */
+  /** @type {URLSearchParams} #searchParams */
   #searchParams;
   #fullUrl;
 
@@ -34,7 +34,9 @@ class DataFetcher {
     this.#weekData = [];
 
     this.setupSearchParameters();
-    this.#fullUrl = new URL(`${this.#endpoint}${this.#query}?${this.#searchParams}`);
+    this.#fullUrl = new URL(
+      `${this.#endpoint}${this.#query}?${this.#searchParams}`,
+    );
   }
 
   /**
@@ -42,20 +44,23 @@ class DataFetcher {
    * */
   setupSearchParameters() {
     this.#searchParams = new URLSearchParams();
-    this.#searchParams.append('unitGroup', this.#unit);
-    this.#searchParams.append('key', this.#apiKey);
-    this.#searchParams.append('contentType', 'json');
+    this.#searchParams.append("unitGroup", this.#unit);
+    this.#searchParams.append("key", this.#apiKey);
+    this.#searchParams.append("contentType", "json");
   }
 
   get query() {
-    return this.#query
+    return this.#query;
   }
 
   /**
    * @param {string} val
+   * @returns {Promise<object | undefined>}
    * */
-  set query(val) {
+  setQuery(val) {
     this.#query = val;
+    this.#fullUrl = new URL(`${this.#endpoint}${this.query}?${this.#searchParams}`);
+    return this.collect();
   }
 
   get unit() {
@@ -71,9 +76,10 @@ class DataFetcher {
 
   async collect() {
     try {
-      const url = new URL(`${this.#endpoint}${this.#query}?${this.#searchParams}`);
+      const url = this.#fullUrl;
       const response = await fetch(url, { mode: "cors" });
       const jsonResponse = await response.json();
+      
 
       // extract data
       this.#data = {
@@ -95,7 +101,9 @@ class DataFetcher {
 
       let obj;
 
-      for(let day of jsonResponse.days){
+      this.#weekData = []
+
+      for (let day of jsonResponse.days) {
         obj = {
           datetime: day.datetime,
           tempmax: day.tempmax,
@@ -113,12 +121,16 @@ class DataFetcher {
           description: day.description,
           icon: day.icon,
         };
-        obj = {address: this.#data.address, resolvedAddress: this.#data.resolvedAddress, ...obj};
+        obj = {
+          address: this.#data.address,
+          resolvedAddress: this.#data.resolvedAddress,
+          ...obj,
+        };
         this.#weekData.push(obj);
       }
-      
+
       return this.#data;
-    } catch(error){
+    } catch (error) {
       console.error(error);
       return undefined;
     }
@@ -136,12 +148,11 @@ class DataFetcher {
     return this.#data;
   }
 
-
   /**
    * @method to return the week's data
    * @returns {object} data
    * */
-  getWeekData(){
+  getWeekData() {
     return this.#weekData;
   }
 }
