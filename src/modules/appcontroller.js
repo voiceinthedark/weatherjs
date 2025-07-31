@@ -7,6 +7,7 @@ import allIcons from "../assets/icons/allicons";
 import TodayWeather from "./todayWeather";
 import WeeKWeatherUI from "./UI/weekweatherui";
 import SearchBarUI from "./UI/searchbarui";
+import FooterUI from "./UI/footerui";
 
 /**
  * @class
@@ -29,7 +30,7 @@ class AppController {
   constructor(appContainer) {
     this.#dataFetcher = new DataFetcher(
       "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/",
-      "Chehour",
+      "Tyre",
       "7WXVPBFAC4BMBGSURKG4AJBTP",
       "metric",
     );
@@ -141,6 +142,16 @@ class AppController {
       this.setDayCard()
       this.setWeekList()
     }
+  }
+
+  /**
+   * @method to setup the footer of the page
+   * */
+  setupFooter(){
+    const footerui = new FooterUI(this.#uimanager);
+    const footer = footerui.renderFooter();
+    this.#container.appendChild(footer);
+
   }
 }
 

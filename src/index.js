@@ -25,6 +25,7 @@ async function runApp() {
   // console.log(app.getWeek())
   //
   app.setWeekList();
+  app.setupFooter()
 }
 
 runApp();

@@ -56,9 +56,7 @@ header {
   margin-bottom: 20px;
   padding-left: 30px;
   width: 100%;
-  background: linear-gradient(to right,
-      rgba(10, 10, 245, 0.8),
-      rgba(10, 10, 245, 0.1));
+  background: linear-gradient(to right, rgba(10, 110, 210, 0.5), rgba(22, 122, 222, 0.8));
 
   h1 {
     font-size: 320%;
@@ -75,27 +73,31 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 4px;
     border: 1px solid #ccc;
     border-radius: 8px;
     overflow: hidden;
-    width: 400px;
+    width: 450px;
 
     .search-bar {
       border: none;
       flex-grow: 1;
-      padding: 8px;
+      padding: 16px;
       outline: none;
+      font-size: 140%;
     }
   }
 
   .locate-btn,
   .search-btn {
+    flex: 0.1 0.2 10%;
+    appearance: none;
+    align-self: stretch;
     border: none;
-    background-color: #00a0aa;
+    background-color: #0000c0;
     color: white;
-    padding: 8px 12px;
+    padding: 8px 8px;
     cursor: pointer;
+    font-size: 170%;
   }
 }
 
@@ -120,6 +122,7 @@ header {
 
     .day-top-div {
       display: flex;
+      flex-wrap: nowrap;
       align-items: center;
       justify-content: space-between;
       gap: 4px;
@@ -127,6 +130,8 @@ header {
       padding-top: 25px;
 
       .day-top-div-left {
+        flex: 1 0 auto;
+
         .day-icon {
           position: absolute;
           top: -10px;
@@ -151,14 +156,22 @@ header {
       }
 
       .day-top-div-right {
+        width: 100%;
         display: flex;
         flex-direction: column;
-        position: relative;
+        align-self: flex-end;
+        align-items: flex-end;
+        /* position: relative; */
 
         .day-address-div {
+          align-self: flex-end;
+          flex: 0.5 0.5 50%;
           display: flex;
           flex-direction: column;
           margin-bottom: 10px;
+          text-align: right;
+          overflow: hidden;
+          width: 100%;
 
           .day-address {
             font-size: 140%;
@@ -166,8 +179,10 @@ header {
           }
 
           .day-resolved-address {
+            flex: 0 2 auto;
             font-size: 90%;
           }
+
         }
 
         .day-date {
@@ -258,13 +273,12 @@ header {
     grid-template-columns: repeat(7, 1fr);
     row-gap: 24px;
     column-gap: 12px;
-    height: 400px;
     margin-top: 100px;
 
     .week-frame {
       display: flex;
       flex-direction: column;
-      height: inherit;
+      height: 400px;
 
       .week-date {
         font-size: 140%;
@@ -418,6 +432,29 @@ header {
     }
   }
 
+  .footer {
+    margin-top: 30px;
+    width: 100%;
+    height: 60px;
+    background: linear-gradient(to right, rgba(10, 110, 210, 0.5), rgba(22, 122, 222, 0.8));
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+    font-size: 120%;
+    .footer-link {
+      .footer-github{
+        font-size: 140%;
+
+        &:hover{
+          transform: rotate(0.5turn);
+          transition: transform 0.3s ease;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
   .partly-cloudy-day {
     background: linear-gradient(to bottom right,
         rgba(155, 152, 154, 0.4),
@@ -524,7 +561,11 @@ header {
   .rain-snow {
     background: linear-gradient(to bottom right, #a1c4fd, #c2e9fb);
   }
+
+
 }
+
+
 
 @media screen and (max-width: 600px) {
   .container {

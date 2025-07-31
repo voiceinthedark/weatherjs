@@ -30,11 +30,11 @@ class SearchBarUI {
       searchbar.type = 'search';
       searchbar.placeholder = 'Search for a city';
     }
-    const locateButton = this.#uimanager.addElement('span', searchbarDiv, 'locate-btn');
+    const locateButton = this.#uimanager.addElement('button', searchbarDiv, 'locate-btn');
     if (locateButton instanceof HTMLElement) {
       locateButton.innerHTML = `<i class='fa-solid fa-location-dot'></i>`
     }
-    const searchButton = this.#uimanager.addElement('span', searchbarDiv, 'search-btn');
+    const searchButton = this.#uimanager.addElement('button', searchbarDiv, 'search-btn');
     if (searchButton instanceof HTMLElement) {
       searchButton.innerHTML = `<i class='fa-solid fa-magnifying-glass'></i>`
     }
