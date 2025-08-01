@@ -80,17 +80,21 @@ class AppController {
   }
 
   setSearchBar() {
-    const header = document.getElementById('header');
-    const searchBar = new SearchBarUI(this.#uimanager).
-      renderSearchBar(
-        this.handleSearchButton.bind(this),
-        this.handleLocationButton.bind(this));
-    header?.appendChild(searchBar)
+    const header = document.getElementById("header");
+    const searchBar = new SearchBarUI(this.#uimanager).renderSearchBar(
+      this.handleSearchButton.bind(this),
+      this.handleLocationButton.bind(this),
+    );
+    header?.appendChild(searchBar);
   }
 
-  setEmptyResult(){
-    const empty = this.#uimanager.addElement('h1', this.#container, 'empty-container')
-    empty.textContent = 'No Data found, retry again'
+  setEmptyResult() {
+    const empty = this.#uimanager.addElement(
+      "h1",
+      this.#container,
+      "empty-container",
+    );
+    empty.textContent = "No Data found, retry again";
   }
 
   /**
@@ -132,35 +136,35 @@ class AppController {
 
   /**
    * @method to handle the search bar value
-   * @param {string} value 
+   * @param {string} value
    * */
   async handleSearchButton(value) {
-    if (value !== '' && value !== null) {
-      console.log(`searching for ${value} in appcontroller`)
-      await this.#dataFetcher.setQuery(value)
-      this.#data = this.#dataFetcher.getData()
-      this.#weekData = this.#dataFetcher.getWeekData()
-      const week = new WeekDaysWeather(this.#weekData)
-      this.#weekDays = week.getDays()
+    if (value !== "" && value !== null) {
+      console.log(`searching for ${value} in appcontroller`);
+      await this.#dataFetcher.setQuery(value);
+      this.#data = this.#dataFetcher.getData();
+      this.#weekData = this.#dataFetcher.getWeekData();
+      const week = new WeekDaysWeather(this.#weekData);
+      this.#weekDays = week.getDays();
 
       this.#uimanager.clearElement(this.#container);
-      this.setDayCard()
-      this.setWeekList()
-      this.setupFooter()
+      this.setDayCard();
+      this.setWeekList();
+      this.setupFooter();
     }
   }
 
   /**
    * @method to handle geolocation button
    * */
-  async handleLocationButton(){
+  async handleLocationButton() {
     console.log("Location button clicked, fetching current location data...");
     navigator.geolocation.getCurrentPosition(
       async (position) => {
         const { latitude, longitude } = position.coords;
         try {
           await this.#dataFetcher.setQuery(`${latitude},${longitude}`);
-          console.log(this.#dataFetcher.query)
+          console.log(this.#dataFetcher.query);
 
           this.#data = this.#dataFetcher.getData();
           this.#weekData = this.#dataFetcher.getWeekData();
@@ -170,7 +174,7 @@ class AppController {
           this.#uimanager.clearElement(this.#container);
           this.setDayCard();
           this.setWeekList();
-          this.setupFooter()
+          this.setupFooter();
         } catch (error) {
           console.error("Error fetching data for current location:", error);
         }
@@ -184,11 +188,10 @@ class AppController {
   /**
    * @method to setup the footer of the page
    * */
-  setupFooter(){
+  setupFooter() {
     const footerui = new FooterUI(this.#uimanager);
     const footer = footerui.renderFooter();
     this.#container.appendChild(footer);
-
   }
 }
 

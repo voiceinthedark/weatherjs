@@ -59,7 +59,9 @@ class DataFetcher {
    * */
   setQuery(val) {
     this.#query = val;
-    this.#fullUrl = new URL(`${this.#endpoint}${this.query}?${this.#searchParams}`);
+    this.#fullUrl = new URL(
+      `${this.#endpoint}${this.query}?${this.#searchParams}`,
+    );
     return this.collect();
   }
 
@@ -79,7 +81,6 @@ class DataFetcher {
       const url = this.#fullUrl;
       const response = await fetch(url, { mode: "cors" });
       const jsonResponse = await response.json();
-      
 
       // extract data
       this.#data = {
@@ -101,7 +102,7 @@ class DataFetcher {
 
       let obj;
 
-      this.#weekData = []
+      this.#weekData = [];
 
       for (let day of jsonResponse.days) {
         obj = {

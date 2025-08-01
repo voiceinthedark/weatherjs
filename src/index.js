@@ -17,16 +17,16 @@ async function runApp() {
     // You can now safely use the data
   } else {
     console.log("Data could not be fetched or is not available.");
-    app.setEmptyResult()
+    app.setEmptyResult();
   }
 
-  app.setSearchBar()
+  app.setSearchBar();
   app.setDayCard();
   // console.log(app.getWeekData())
   // console.log(app.getWeek())
   //
   app.setWeekList();
-  app.setupFooter()
+  app.setupFooter();
 }
 
 runApp();

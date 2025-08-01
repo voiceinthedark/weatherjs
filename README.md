@@ -2,11 +2,11 @@
 
 ## About
 
-A weather fetcher application with vanilla javascript and css.
+A weather application with vanilla javascript and css.
 
 ## Roadmap
 
-- [ ] Add Geolocation 
+- [x] Add Geolocation
 - [ ] Make the week's list backgrounds vary in color degrees
 - [ ] Make the week's list items interactive
 
