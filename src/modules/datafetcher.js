@@ -14,6 +14,9 @@ class DataFetcher {
    * */
   #data;
   #weekData;
+  #hoursData;
+  /** @type {object} */
+  #groupedHoursByDay;
   /** @type {URLSearchParams} #searchParams */
   #searchParams;
   #fullUrl;
@@ -32,6 +35,7 @@ class DataFetcher {
     this.#unit = unit;
 
     this.#weekData = [];
+    this.#hoursData = []
 
     this.setupSearchParameters();
     this.#fullUrl = new URL(
@@ -80,6 +84,7 @@ class DataFetcher {
     try {
       const url = this.#fullUrl;
       const response = await fetch(url, { mode: "cors" });
+      /** @type {Object} */
       const jsonResponse = await response.json();
 
       // extract data
@@ -103,6 +108,7 @@ class DataFetcher {
       let obj;
 
       this.#weekData = [];
+      this.#hoursData = [];
 
       for (let day of jsonResponse.days) {
         obj = {
@@ -128,7 +134,33 @@ class DataFetcher {
           ...obj,
         };
         this.#weekData.push(obj);
+
+        // Collect each day hours
+        // TODO: Extract the hours data and associate each 24 hours list with the corresponding day
+        // TODO: group result by day
+        for( let hour of day.hours){
+          let hourObj = {
+            datetime: hour.datetime,
+            temp: hour.temp,
+            feelslike: hour.feelslike,
+            humidity: hour.humidity,
+            precipitation: hour.precip,
+            precipprob: hour.precipprob,
+            windspeed: hour.windspeed,
+            solarenergy: hour.solarenergy,
+            conditions: hour.conditions,
+            icon: hour.icon,
+          };
+          hourObj = {day: obj.datetime, ...hourObj};
+          this.#hoursData.push(hourObj);
+        }
+
       }
+
+      this.#groupedHoursByDay = Object.groupBy(this.#hoursData, (hour) =>{
+        //group each 24 hours object by date
+        return hour.day;
+      })
 
       return this.#data;
     } catch (error) {
@@ -155,6 +187,22 @@ class DataFetcher {
    * */
   getWeekData() {
     return this.#weekData;
+  }
+
+  /**
+   * @method to return the hourly data
+   * @returns {Array}
+   * */
+  getHoursData(){
+    return this.#hoursData;
+  }
+
+  /**
+   * @method to return the hourly data grouped by day
+   * @returns {Array}
+   * */
+  getGroupedHoursByDay(){
+    return this.#groupedHoursByDay;
   }
 }
 

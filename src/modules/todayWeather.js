@@ -1,5 +1,7 @@
 // @ts-check
 
+import HoursWeather from "./hoursweather";
+
 /**
  * @class TodayWeather
  * @description Holds information about weather condition for any given day
@@ -22,6 +24,7 @@ class TodayWeather {
   #icon;
   #sunrise;
   #sunset;
+  #hours;
 
   /**
    * @constructor
@@ -64,6 +67,8 @@ class TodayWeather {
     this.#tempMin = weatherData.tempmin ?? 30;
     this.#tempMax = weatherData.tempmax ?? 30;
     this.#description = weatherData.description ?? "";
+
+    this.#hours = null;
   }
 
   get address() {
@@ -118,6 +123,17 @@ class TodayWeather {
   }
   get description() {
     return this.#description;
+  }
+
+  get hours(){
+    return this.#hours
+  }
+  /**
+   * @method to set the hours
+   * @param {HoursWeather} val 
+   * */
+  set hours(val){
+    this.#hours = val; 
   }
 
   /**

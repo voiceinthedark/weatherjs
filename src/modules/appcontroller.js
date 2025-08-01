@@ -8,6 +8,7 @@ import TodayWeather from "./todayWeather";
 import WeeKWeatherUI from "./UI/weekweatherui";
 import SearchBarUI from "./UI/searchbarui";
 import FooterUI from "./UI/footerui";
+import HoursWeather from "./hoursweather";
 
 /**
  * @class
@@ -21,6 +22,8 @@ class AppController {
   #weekData;
   /** @type {Array<TodayWeather>} */
   #weekDays;
+  // #hoursData;
+  // #hoursWeather;
   #uimanager;
   #container;
 
@@ -50,6 +53,20 @@ class AppController {
       this.#weekData = await this.#dataFetcher.getWeekData();
       const week = new WeekDaysWeather(this.#weekData);
       this.#weekDays = week.getDays();
+      // Retrieve the raw grouped hours data from DataFetcher
+      const rawGroupedHoursByDay = this.#dataFetcher.getGroupedHoursByDay();
+
+      // Associate HoursWeather object with each TodayWeather object
+      for (const dayWeather of this.#weekDays) {
+        // Assuming TodayWeather objects have a 'datetime' property (e.g., via a getter)
+        const dayKey = dayWeather.datetime;
+        if (rawGroupedHoursByDay && rawGroupedHoursByDay[dayKey]) {
+          const hoursForThisDay = rawGroupedHoursByDay[dayKey];
+          const hoursWeatherInstance = new HoursWeather(hoursForThisDay);
+          
+          dayWeather.hours = hoursWeatherInstance;
+        }
+      }
     } catch (error) {
       console.error("Error fetching initial data:", error);
       this.#data = undefined; // Ensure #data is in a known state on error
@@ -82,6 +99,14 @@ class AppController {
    * */
   getWeek() {
     return this.#weekDays;
+  }
+
+  // getHoursData() {
+  //   return this.#hoursData;
+  // }
+
+  getGroupedByHoursData() {
+    return this.getWeek()
   }
 
   setSearchBar() {
@@ -156,17 +181,28 @@ class AppController {
         const week = new WeekDaysWeather(this.#weekData);
         this.#weekDays = week.getDays();
 
+        const rawGroupedHoursByDay = this.#dataFetcher.getGroupedHoursByDay()
+
+        for (const dayWeather of this.#weekDays) {
+          const dayKey = dayWeather.datetime;
+          if (rawGroupedHoursByDay && rawGroupedHoursByDay[dayKey]) {
+            const hoursForThisDay = rawGroupedHoursByDay[dayKey]
+            const hoursWeatherInstance = new HoursWeather(hoursForThisDay);
+            dayWeather.hours = hoursWeatherInstance;
+          }
+        }
+
         this.setDayCard();
         this.setWeekList();
         this.setupFooter();
-      }catch(error){
+      } catch (error) {
         console.error("Error fetching data for search query", error);
         this.setEmptyResult()
-      } finally{
+      } finally {
         this.#uimanager.hideLoading()
       }
 
-      
+
     }
   }
 
@@ -174,6 +210,7 @@ class AppController {
    * @method to handle geolocation button
    * */
   async handleLocationButton() {
+    // TODO: Fix Geolocation not getting the city name and getting out of bound on the ui
     console.log("Location button clicked, fetching current location data...");
     this.#uimanager.clearElement(this.#container)
     this.#uimanager.showLoading()
@@ -190,13 +227,26 @@ class AppController {
           const week = new WeekDaysWeather(this.#weekData);
           this.#weekDays = week.getDays();
 
+          // Retrieve the raw grouped hours data after new query
+          const rawGroupedHoursByDay = this.#dataFetcher.getGroupedHoursByDay();
+
+          // Associate HoursWeather object with each TodayWeather object
+          for (const dayWeather of this.#weekDays) {
+            const dayKey = dayWeather.datetime;
+            if (rawGroupedHoursByDay && rawGroupedHoursByDay[dayKey]) {
+              const hoursForThisDay = rawGroupedHoursByDay[dayKey];
+              const hoursWeatherInstance = new HoursWeather(hoursForThisDay);
+              dayWeather.hours = hoursWeatherInstance; // Assuming direct property assignment
+            }
+          }
+
           this.setDayCard();
           this.setWeekList();
           this.setupFooter();
         } catch (error) {
           console.error("Error fetching data for current location:", error);
           this.setEmptyResult()
-        } finally{
+        } finally {
           this.#uimanager.hideLoading()
         }
       },

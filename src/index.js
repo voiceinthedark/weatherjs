@@ -27,6 +27,8 @@ async function runApp() {
   //
   app.setWeekList();
   app.setupFooter();
+  // console.log(app.getHoursData())
+  console.log(app.getGroupedByHoursData())
 }
 
 runApp();
