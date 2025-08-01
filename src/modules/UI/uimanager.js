@@ -3,6 +3,8 @@
 class UIManager {
   #container;
   #icons;
+  /** @type {HTMLElement | null} */
+  #loadingElement = null;
   /**
    * @param {Node} appContainer - Node element for the application container
    * @param {Object<string, string>} icons - object containing icon names as keys and values as the path
@@ -10,6 +12,30 @@ class UIManager {
   constructor(appContainer, icons) {
     this.#container = appContainer;
     this.#icons = icons;
+  }
+
+  /**
+     * Shows a loading spinner/message in the main app container.
+     */
+  showLoading() {
+    if (this.#loadingElement) {
+      return;
+    }
+
+    this.#loadingElement = this.addElement('div', this.#container, 'loading-spinner');
+    if (this.#loadingElement instanceof HTMLElement) {
+      this.#loadingElement.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading data...';
+    }
+  }
+
+  /**
+     * Hides and removes the loading spinner/message.
+     */
+  hideLoading() {
+    if (this.#loadingElement && this.#loadingElement.parentNode) {
+      this.#loadingElement.parentNode.removeChild(this.#loadingElement);
+      this.#loadingElement = null;
+    }
   }
 
   /**
@@ -26,7 +52,7 @@ class UIManager {
    * @param {string} type - type of node element
    * @param {Node} parent - parent node of the element
    * @param {string} cls - css class of the element
-   * @returns {Node} - created element
+   * @returns {HTMLElement} - created element
    * */
   addElement(type, parent, cls) {
     const elem = document.createElement(type);
@@ -57,7 +83,7 @@ class UIManager {
 
   /**
    * @method to clear all child elements of a parent element
-   * @param {Node} parent
+   * @param {HTMLElement} parent
    * @description clear all the elements inside of parent
    **/
   clearElement(parent) {

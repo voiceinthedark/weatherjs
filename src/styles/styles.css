@@ -18,10 +18,8 @@
 @font-face {
   font-family: "Montserrat";
   src:
-    url("../assets/fonts/Montserrat/Montserrat-VariableFont_wght.ttf")
-      format("truetype"),
-    url("../assets/fonts/Montserrat/Montserrat-Italic-VariableFont_wght.ttf")
-      format("truetype");
+    url("../assets/fonts/Montserrat/Montserrat-VariableFont_wght.ttf") format("truetype"),
+    url("../assets/fonts/Montserrat/Montserrat-Italic-VariableFont_wght.ttf") format("truetype");
   font-weight: 100 900;
   font-style: normal, italic;
 }
@@ -60,11 +58,9 @@ header {
   margin-bottom: 120px;
   padding-left: 30px;
   width: 100%;
-  background: linear-gradient(
-    to right,
-    rgba(10, 110, 210, 0.5),
-    rgba(22, 122, 222, 0.8)
-  );
+  background: linear-gradient(to right,
+      rgba(10, 110, 210, 0.5),
+      rgba(22, 122, 222, 0.8));
 
   h1 {
     font-size: 320%;
@@ -116,6 +112,22 @@ header {
   align-items: center;
   height: 100%;
   margin-top: 200px;
+
+  .loading-spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3.5em;
+    color: #555;
+    padding: 20px;
+    min-height: 100px;
+    text-align: center;
+    flex-direction: column;
+  }
+
+  .loading-spinner .fa-spinner {
+    margin-bottom: 10px;
+  }
 
   .day-card {
     display: flex;
@@ -443,16 +455,15 @@ header {
     margin-top: 30px;
     width: 100%;
     padding: 10px 0;
-    background: linear-gradient(
-      to right,
-      rgba(10, 110, 210, 0.5),
-      rgba(22, 122, 222, 0.8)
-    );
+    background: linear-gradient(to right,
+        rgba(10, 110, 210, 0.5),
+        rgba(22, 122, 222, 0.8));
     display: flex;
     gap: 8px;
     justify-content: center;
     align-items: center;
     font-size: 120%;
+
     .footer-link {
       .footer-github {
         font-size: 140%;
@@ -467,19 +478,15 @@ header {
   }
 
   .partly-cloudy-day {
-    background: linear-gradient(
-      to bottom right,
-      rgba(155, 152, 154, 0.4),
-      rgba(255, 252, 154, 0.8)
-    );
+    background: linear-gradient(to bottom right,
+        rgba(155, 152, 154, 0.4),
+        rgba(255, 252, 154, 0.8));
   }
 
   .partly-cloudy-night {
-    background: linear-gradient(
-      to bottom right,
-      rgba(136, 170, 175, 0.4),
-      rgba(134, 170, 175, 0.8)
-    );
+    background: linear-gradient(to bottom right,
+        rgba(136, 170, 175, 0.4),
+        rgba(134, 170, 175, 0.8));
   }
 
   .clear-day {
@@ -492,11 +499,9 @@ header {
   }
 
   .cloudy {
-    background: linear-gradient(
-      to bottom right,
-      var(--color-cloudy),
-      var(--color-cloudy)
-    );
+    background: linear-gradient(to bottom right,
+        var(--color-cloudy),
+        var(--color-cloudy));
   }
 
   .rain {
@@ -532,11 +537,9 @@ header {
   }
 
   .snow-showers-night {
-    background: linear-gradient(
-      to bottom right,
-      rgba(136, 170, 175, 0.4),
-      rgba(134, 170, 175, 0.8)
-    );
+    background: linear-gradient(to bottom right,
+        rgba(136, 170, 175, 0.4),
+        rgba(134, 170, 175, 0.8));
     color: #fff;
   }
 
@@ -549,11 +552,9 @@ header {
   }
 
   .thunder-showers-night {
-    background: linear-gradient(
-      to bottom right,
-      rgba(136, 170, 175, 0.4),
-      rgba(134, 170, 175, 0.8)
-    );
+    background: linear-gradient(to bottom right,
+        rgba(136, 170, 175, 0.4),
+        rgba(134, 170, 175, 0.8));
     color: #fff;
   }
 
@@ -562,11 +563,9 @@ header {
   }
 
   .showers-night {
-    background: linear-gradient(
-      to bottom right,
-      rgba(136, 170, 175, 0.4),
-      rgba(134, 170, 175, 0.8)
-    );
+    background: linear-gradient(to bottom right,
+        rgba(136, 170, 175, 0.4),
+        rgba(134, 170, 175, 0.8));
     color: #fff;
   }
 
@@ -575,11 +574,9 @@ header {
   }
 
   .rain-snow-showers-night {
-    background: linear-gradient(
-      to bottom right,
-      rgba(136, 170, 175, 0.4),
-      rgba(134, 170, 175, 0.8)
-    );
+    background: linear-gradient(to bottom right,
+        rgba(136, 170, 175, 0.4),
+        rgba(134, 170, 175, 0.8));
     color: #fff;
   }
 

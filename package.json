@@ -1,6 +1,6 @@
 {
   "name": "weatherjs",
-  "version": "0.3.3",
+  "version": "0.3.5",
   "description": "a weather fetcher application",
   "main": "index.js",
   "homepage": "https://voiceinthedark.github.io/weatherjs/",
@@ -24,7 +24,10 @@
   "keywords": [
     "weather",
     "api",
-    "javascript"
+    "javascript",
+    "vanilla-javascript",
+    "css",
+    "webpack"
   ],
   "author": "voiceinthedark",
   "license": "ISC",

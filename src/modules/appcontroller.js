@@ -44,6 +44,7 @@ class AppController {
    * @returns {Promise<void>}
    * */
   async initialize() {
+    this.#uimanager.showLoading()
     try {
       this.#data = await this.#dataFetcher.collect();
       this.#weekData = await this.#dataFetcher.getWeekData();
@@ -53,7 +54,11 @@ class AppController {
       console.error("Error fetching initial data:", error);
       this.#data = undefined; // Ensure #data is in a known state on error
       this.#weekData = undefined;
+      this.setEmptyResult()
+    } finally {
+      this.#uimanager.hideLoading()
     }
+
   }
 
   /**
@@ -141,16 +146,27 @@ class AppController {
   async handleSearchButton(value) {
     if (value !== "" && value !== null) {
       console.log(`searching for ${value} in appcontroller`);
-      await this.#dataFetcher.setQuery(value);
-      this.#data = this.#dataFetcher.getData();
-      this.#weekData = this.#dataFetcher.getWeekData();
-      const week = new WeekDaysWeather(this.#weekData);
-      this.#weekDays = week.getDays();
+      this.#uimanager.clearElement(this.#container)
+      this.#uimanager.showLoading()
 
-      this.#uimanager.clearElement(this.#container);
-      this.setDayCard();
-      this.setWeekList();
-      this.setupFooter();
+      try {
+        await this.#dataFetcher.setQuery(value);
+        this.#data = this.#dataFetcher.getData();
+        this.#weekData = this.#dataFetcher.getWeekData();
+        const week = new WeekDaysWeather(this.#weekData);
+        this.#weekDays = week.getDays();
+
+        this.setDayCard();
+        this.setWeekList();
+        this.setupFooter();
+      }catch(error){
+        console.error("Error fetching data for search query", error);
+        this.setEmptyResult()
+      } finally{
+        this.#uimanager.hideLoading()
+      }
+
+      
     }
   }
 
@@ -159,6 +175,9 @@ class AppController {
    * */
   async handleLocationButton() {
     console.log("Location button clicked, fetching current location data...");
+    this.#uimanager.clearElement(this.#container)
+    this.#uimanager.showLoading()
+
     navigator.geolocation.getCurrentPosition(
       async (position) => {
         const { latitude, longitude } = position.coords;
@@ -171,16 +190,20 @@ class AppController {
           const week = new WeekDaysWeather(this.#weekData);
           this.#weekDays = week.getDays();
 
-          this.#uimanager.clearElement(this.#container);
           this.setDayCard();
           this.setWeekList();
           this.setupFooter();
         } catch (error) {
           console.error("Error fetching data for current location:", error);
+          this.setEmptyResult()
+        } finally{
+          this.#uimanager.hideLoading()
         }
       },
       (error) => {
         console.error("Geolocation error:", error);
+        this.#uimanager.hideLoading()
+        this.setEmptyResult()
       },
     );
   }
