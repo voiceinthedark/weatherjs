@@ -489,7 +489,7 @@ header {
     display: flex;
     gap: 8px;
     flex-wrap: nowrap;
-    width: 50%;
+    width: 70%;
     min-height: 140px;
     overflow-x: auto;
     

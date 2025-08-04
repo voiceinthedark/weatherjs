@@ -1,8 +1,8 @@
 // @ts-check
 
-import HoursWeather from "../hoursweather";
-import HourWeather from "../hourweather";
-import UIManager from "./uimanager";
+import HoursWeather from "../hoursweather.js";
+import HourWeather from "../hourweather.js";
+import UIManager from "./uimanager.js";
 import {format, parse} from "date-fns"
 
 /**
@@ -29,6 +29,7 @@ class HourUI{
   renderHoursList(hours){
     const hoursList = document.createElement('div');
     hoursList.classList.add('hour-list')
+    hoursList.setAttribute('id', 'hourlist')
 
     /** @type {HourWeather} h */
     hours.forEach((h) => {

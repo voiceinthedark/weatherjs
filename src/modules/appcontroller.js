@@ -67,7 +67,7 @@ class AppController {
 
           dayWeather.hours = hoursWeatherInstance;
           // insert the id into this.data
-          this.#data = { id: dayWeather.id, ...this.#data };
+          // this.#data = { id: dayWeather.id, ...this.#data };
         }
       }
     } catch (error) {
@@ -140,7 +140,7 @@ class AppController {
     }
 
     const dayWeatherUI = new DayWeatherUI(this.#uimanager);
-    const dayCard = dayWeatherUI.renderDayCard(this.#data,
+    const dayCard = dayWeatherUI.renderDayCard(this.#weekDays[0],
       this.handleCardClick.bind(this));
 
     if (this.#container) {
@@ -281,12 +281,18 @@ class AppController {
    * @param {HoursWeather} hours 
    * */
   setHourlyCards(hours) {
-    //TODO: method to set the hourly cards
     const hourui = new HourUI(this.#uimanager);
     const hoursList = hourui.renderHoursList(hours)
 
-    // TODO: insert the list after the day card, and before the week list
-    // this.#container.append(hoursList);
+    // Chech if there is an hourlist
+    const hl = document.getElementById('hourlist');
+    if (hl) {
+      //remove it
+      this.#container.removeChild(hl)
+
+      this.#container.insertBefore(hoursList, this.#weekListUI)
+    }
+
     this.#container.insertBefore(hoursList, this.#weekListUI)
   }
 
@@ -295,7 +301,6 @@ class AppController {
    * @param {string} id 
    * */
   handleCardClick(id) {
-    //TODO: Add functionality of displaying hourly data to the corresponding day
     // Get the todayWeather object associated with the clicked card id
     const td = this.#weekDays.find(tw => tw.id === id)
     if (td) {

@@ -1,5 +1,5 @@
 // @ts-check
-import TodayWeather from "./todayWeather";
+import TodayWeather from "./todayWeather.js";
 
 /**
  * @class WeekDaysWeather
