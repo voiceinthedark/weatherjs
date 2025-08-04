@@ -1,5 +1,6 @@
 // @ts-check
 
+import {v4 as uuid} from 'uuid';
 import HoursWeather from "./hoursweather";
 
 /**
@@ -7,6 +8,7 @@ import HoursWeather from "./hoursweather";
  * @description Holds information about weather condition for any given day
  * */
 class TodayWeather {
+  #id;
   #address;
   #resolvedAddress;
   #datetime;
@@ -49,6 +51,7 @@ class TodayWeather {
    * @param {string} weatherData.sunset
    * */
   constructor(weatherData) {
+    this.#id = uuid();
     this.#address = weatherData.address;
     this.#resolvedAddress = weatherData.resolvedAddress;
     this.#temperature = weatherData.temperature ?? weatherData.temp; // temperature on current, but temp on forecast (?!)
@@ -71,6 +74,9 @@ class TodayWeather {
     this.#hours = null;
   }
 
+  get id(){
+    return this.#id;
+  }
   get address() {
     return this.#address;
   }
@@ -126,7 +132,7 @@ class TodayWeather {
   }
 
   get hours(){
-    return this.#hours
+    return this.#hours.getHours();
   }
   /**
    * @method to set the hours

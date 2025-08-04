@@ -1,7 +1,7 @@
 {
   "name": "weatherjs",
-  "version": "0.3.5",
-  "description": "a weather fetcher application",
+  "version": "0.4.04",
+  "description": "a weather application",
   "main": "index.js",
   "homepage": "https://voiceinthedark.github.io/weatherjs/",
   "scripts": {
@@ -27,14 +27,14 @@
     "javascript",
     "vanilla-javascript",
     "css",
-    "webpack"
+    "webpack",
+    "geolocation"
   ],
   "author": "voiceinthedark",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/voiceinthedark/weatherjs/issues"
   },
-  "homepage": "",
   "devDependencies": {
     "@eslint/js": "^9.31.0",
     "css-loader": "^7.1.2",

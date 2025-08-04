@@ -44,9 +44,10 @@ class DayWeatherUI {
    * @method
    * @description Renders the day card onto the page.
    * @param {Object} day - The day data to render.
+   * @param {Function} handleClickCallback 
    * @returns {HTMLElement} The rendered day card element.
    */
-  renderDayCard(day) {
+  renderDayCard(day, handleClickCallback) {
     const dayCard = document.createElement("div");
     dayCard.classList.add("day-card");
 
@@ -260,6 +261,13 @@ class DayWeatherUI {
     } else {
       dayCard.classList.add("clear-day"); // default background if icon not found
     }
+
+    dayCard.dataset.id = `${day.id}`;
+
+    dayCard.addEventListener('click', () => {
+      // TODO: relegate a mehtod from the app controller to display hours of the day
+      handleClickCallback(day.id);
+    });
 
     return dayCard;
   }

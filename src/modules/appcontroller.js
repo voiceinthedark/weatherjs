@@ -58,13 +58,14 @@ class AppController {
 
       // Associate HoursWeather object with each TodayWeather object
       for (const dayWeather of this.#weekDays) {
-        // Assuming TodayWeather objects have a 'datetime' property (e.g., via a getter)
         const dayKey = dayWeather.datetime;
         if (rawGroupedHoursByDay && rawGroupedHoursByDay[dayKey]) {
           const hoursForThisDay = rawGroupedHoursByDay[dayKey];
           const hoursWeatherInstance = new HoursWeather(hoursForThisDay);
-          
+
           dayWeather.hours = hoursWeatherInstance;
+          // insert the id into this.data
+          this.#data = { id: dayWeather.id, ...this.#data };
         }
       }
     } catch (error) {
@@ -137,7 +138,8 @@ class AppController {
     }
 
     const dayWeatherUI = new DayWeatherUI(this.#uimanager);
-    const dayCard = dayWeatherUI.renderDayCard(this.#data);
+    const dayCard = dayWeatherUI.renderDayCard(this.#data,
+      this.handleCardClick.bind(this));
 
     if (this.#container) {
       this.#container.appendChild(dayCard);
@@ -265,6 +267,17 @@ class AppController {
     const footerui = new FooterUI(this.#uimanager);
     const footer = footerui.renderFooter();
     this.#container.appendChild(footer);
+  }
+
+  /**
+   * @method to handle clicking the main weather card to display hourly data
+   * @param {string} id 
+   * */
+  handleCardClick(id) {
+    //TODO: Add functionality of displaying hourly data to the corresponding day
+    // Get the todayWeather object
+    const td = this.#weekDays.filter(tw => tw.id === id)
+    console.log(td[0].hours)
   }
 }
 
