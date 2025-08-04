@@ -265,7 +265,7 @@ class DayWeatherUI {
     dayCard.dataset.id = `${day.id}`;
 
     dayCard.addEventListener('click', () => {
-      // TODO: relegate a mehtod from the app controller to display hours of the day
+      console.log(`clicked the day card for ${day.id}`)
       handleClickCallback(day.id);
     });
 
