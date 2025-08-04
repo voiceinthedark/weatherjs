@@ -1,7 +1,7 @@
 // @ts-check
 
 import {v4 as uuid} from 'uuid';
-import HoursWeather from "./hoursweather";
+import HoursWeather from "./hoursweather.js";
 
 /**
  * @class TodayWeather
@@ -18,7 +18,7 @@ class TodayWeather {
   #feelslike;
   #humidity;
   #precipitation;
-  #precipitationProbability;
+  #precipprob;
   #windspeed;
   #solarenergy;
   #conditions;
@@ -59,7 +59,7 @@ class TodayWeather {
     this.#datetime = weatherData.datetime;
     this.#humidity = weatherData.humidity;
     this.#precipitation = weatherData.precipitation;
-    this.#precipitationProbability = weatherData.precipprob;
+    this.#precipprob = weatherData.precipprob;
     this.#windspeed = weatherData.windspeed;
     this.#solarenergy = weatherData.solarenergy;
     this.#conditions = weatherData.conditions;
@@ -98,8 +98,8 @@ class TodayWeather {
   get precipitation() {
     return this.#precipitation;
   }
-  get precipitationProbability() {
-    return this.#precipitationProbability;
+  get precipprob() {
+    return this.#precipprob;
   }
   get windspeed() {
     return this.#windspeed;

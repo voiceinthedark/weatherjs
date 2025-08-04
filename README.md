@@ -7,7 +7,7 @@ A weather application with vanilla javascript and css.
 ## Roadmap
 
 - [x] Add Geolocation
-- [ ] Add hourly forecast for the day
+- [x] Add hourly forecast for the day
 - [ ] Add hourly forecast for each day of the week
 - [ ] Make the week's list backgrounds vary in color degrees
 - [ ] Make the week's list items interactive

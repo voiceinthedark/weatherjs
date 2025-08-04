@@ -1,5 +1,6 @@
 // @ts-check
-import UIManager from "./uimanager";
+import TodayWeather from "../todayWeather.js";
+import UIManager from "./uimanager.js";
 
 /**
  * @class
@@ -43,7 +44,7 @@ class DayWeatherUI {
   /**
    * @method
    * @description Renders the day card onto the page.
-   * @param {Object} day - The day data to render.
+   * @param {TodayWeather} day - The day data to render.
    * @param {Function} handleClickCallback 
    * @returns {HTMLElement} The rendered day card element.
    */
@@ -77,7 +78,7 @@ class DayWeatherUI {
       topDivLeft,
       "day-feel",
     );
-    feelslike.textContent = `Feels ${day.feelsLike}°C`;
+    feelslike.textContent = `Feels ${day.feelslike}°C`;
     const topDivRight = this.#uimanager.addElement(
       "div",
       topDiv,
