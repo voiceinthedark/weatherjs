@@ -140,6 +140,10 @@ header {
     height: 350px;
     margin-top: 40px;
 
+    &:hover{
+      cursor: pointer;
+    }
+
     .day-top-div {
       display: flex;
       flex-wrap: nowrap;
@@ -475,6 +479,68 @@ header {
         }
       }
     }
+  }
+
+  .hour-list{
+    border: 1px solid black;
+    border-radius: 8px;
+    /* padding: 30px 15px; */
+    margin: 20px 0;
+    display: flex;
+    gap: 8px;
+    flex-wrap: nowrap;
+    width: 50%;
+    min-height: 140px;
+    overflow-x: auto;
+    
+    .hour-frame{
+      height: 120px;
+      width: 100px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      .hour-time{
+        text-overflow: ellipsis;
+        text-align: center;
+      }
+
+      .hour-card{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100px;
+        padding: 5px;
+        width: inherit;
+        border-radius: 8px;
+
+        .hour-header{
+          display: flex;
+          align-items: center;
+          position: relative;
+
+          .hour-icon{
+            width: 24px;
+            height: 24px;
+            position:absolute;
+            top: 0;
+            right: 0;
+          }
+
+          .hour-temp{
+            font-size: 110%;
+          }
+        }
+
+        .hour-conditions{
+          align-self: center;
+          font-size: 120%;
+          padding-bottom: 10px;
+        }
+      }
+
+    }
+
   }
 
   .partly-cloudy-day {

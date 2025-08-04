@@ -9,6 +9,7 @@ import WeeKWeatherUI from "./UI/weekweatherui";
 import SearchBarUI from "./UI/searchbarui";
 import FooterUI from "./UI/footerui";
 import HoursWeather from "./hoursweather";
+import HourUI from "./UI/hourui";
 
 /**
  * @class
@@ -26,6 +27,7 @@ class AppController {
   // #hoursWeather;
   #uimanager;
   #container;
+  #weekListUI;
 
   /**
    * @param {HTMLElement} appContainer
@@ -148,9 +150,13 @@ class AppController {
     }
   }
 
+  /**
+   * @method to set week list
+   * */
   setWeekList() {
     if (!this.#weekDays) {
       console.error("No data available to render the forecast");
+      // TODO: current workaround
       return;
     }
 
@@ -164,6 +170,7 @@ class AppController {
     } else {
       console.error("Container not found");
     }
+    this.#weekListUI = weekForecast;
   }
 
   /**
@@ -270,14 +277,31 @@ class AppController {
   }
 
   /**
+   * @method to set the hourly data of the selected todayWeather object
+   * @param {HoursWeather} hours 
+   * */
+  setHourlyCards(hours) {
+    //TODO: method to set the hourly cards
+    const hourui = new HourUI(this.#uimanager);
+    const hoursList = hourui.renderHoursList(hours)
+
+    // TODO: insert the list after the day card, and before the week list
+    // this.#container.append(hoursList);
+    this.#container.insertBefore(hoursList, this.#weekListUI)
+  }
+
+  /**
    * @method to handle clicking the main weather card to display hourly data
    * @param {string} id 
    * */
   handleCardClick(id) {
     //TODO: Add functionality of displaying hourly data to the corresponding day
-    // Get the todayWeather object
-    const td = this.#weekDays.filter(tw => tw.id === id)
-    console.log(td[0].hours)
+    // Get the todayWeather object associated with the clicked card id
+    const td = this.#weekDays.find(tw => tw.id === id)
+    if (td) {
+      console.log(td.hours)
+      this.setHourlyCards(td.hours);
+    }
   }
 }
 
