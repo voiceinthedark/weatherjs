@@ -1,6 +1,6 @@
 // @ts-check
 
-import {v4 as uuid} from 'uuid';
+import { v4 as uuid } from "uuid";
 import HoursWeather from "./hoursweather.js";
 
 /**
@@ -74,7 +74,7 @@ class TodayWeather {
     this.#hours = null;
   }
 
-  get id(){
+  get id() {
     return this.#id;
   }
   get address() {
@@ -131,15 +131,15 @@ class TodayWeather {
     return this.#description;
   }
 
-  get hours(){
+  get hours() {
     return this.#hours.getHours();
   }
   /**
    * @method to set the hours
-   * @param {HoursWeather} val 
+   * @param {HoursWeather} val
    * */
-  set hours(val){
-    this.#hours = val; 
+  set hours(val) {
+    this.#hours = val;
   }
 
   /**

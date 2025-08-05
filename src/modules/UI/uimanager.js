@@ -15,22 +15,27 @@ class UIManager {
   }
 
   /**
-     * Shows a loading spinner/message in the main app container.
-     */
+   * Shows a loading spinner/message in the main app container.
+   */
   showLoading() {
     if (this.#loadingElement) {
       return;
     }
 
-    this.#loadingElement = this.addElement('div', this.#container, 'loading-spinner');
+    this.#loadingElement = this.addElement(
+      "div",
+      this.#container,
+      "loading-spinner",
+    );
     if (this.#loadingElement instanceof HTMLElement) {
-      this.#loadingElement.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading data...';
+      this.#loadingElement.innerHTML =
+        '<i class="fas fa-spinner fa-spin"></i> Loading data...';
     }
   }
 
   /**
-     * Hides and removes the loading spinner/message.
-     */
+   * Hides and removes the loading spinner/message.
+   */
   hideLoading() {
     if (this.#loadingElement && this.#loadingElement.parentNode) {
       this.#loadingElement.parentNode.removeChild(this.#loadingElement);

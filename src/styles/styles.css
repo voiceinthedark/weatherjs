@@ -18,8 +18,10 @@
 @font-face {
   font-family: "Montserrat";
   src:
-    url("../assets/fonts/Montserrat/Montserrat-VariableFont_wght.ttf") format("truetype"),
-    url("../assets/fonts/Montserrat/Montserrat-Italic-VariableFont_wght.ttf") format("truetype");
+    url("../assets/fonts/Montserrat/Montserrat-VariableFont_wght.ttf")
+      format("truetype"),
+    url("../assets/fonts/Montserrat/Montserrat-Italic-VariableFont_wght.ttf")
+      format("truetype");
   font-weight: 100 900;
   font-style: normal, italic;
 }
@@ -58,9 +60,11 @@ header {
   margin-bottom: 120px;
   padding-left: 30px;
   width: 100%;
-  background: linear-gradient(to right,
-      rgba(10, 110, 210, 0.5),
-      rgba(22, 122, 222, 0.8));
+  background: linear-gradient(
+    to right,
+    rgba(10, 110, 210, 0.5),
+    rgba(22, 122, 222, 0.8)
+  );
 
   h1 {
     font-size: 320%;
@@ -140,7 +144,7 @@ header {
     height: 350px;
     margin-top: 40px;
 
-    &:hover{
+    &:hover {
       cursor: pointer;
     }
 
@@ -320,7 +324,7 @@ header {
         border-radius: 20px;
         padding: 10px 5px;
 
-        &:hover{
+        &:hover {
           cursor: pointer;
         }
 
@@ -463,9 +467,11 @@ header {
     margin-top: 30px;
     width: 100%;
     padding: 10px 0;
-    background: linear-gradient(to right,
-        rgba(10, 110, 210, 0.5),
-        rgba(22, 122, 222, 0.8));
+    background: linear-gradient(
+      to right,
+      rgba(10, 110, 210, 0.5),
+      rgba(22, 122, 222, 0.8)
+    );
     display: flex;
     gap: 8px;
     justify-content: center;
@@ -485,7 +491,7 @@ header {
     }
   }
 
-  .hour-list{
+  .hour-list {
     border: 1px solid black;
     border-radius: 8px;
     /* padding: 30px 15px; */
@@ -496,20 +502,20 @@ header {
     width: 70%;
     min-height: 140px;
     overflow-x: auto;
-    
-    .hour-frame{
+
+    .hour-frame {
       height: 120px;
       width: 100px;
       display: flex;
       flex-direction: column;
       justify-content: center;
 
-      .hour-time{
+      .hour-time {
         text-overflow: ellipsis;
         text-align: center;
       }
 
-      .hour-card{
+      .hour-card {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -518,45 +524,47 @@ header {
         width: inherit;
         border-radius: 8px;
 
-        .hour-header{
+        .hour-header {
           display: flex;
           align-items: center;
           position: relative;
 
-          .hour-icon{
+          .hour-icon {
             width: 24px;
             height: 24px;
-            position:absolute;
+            position: absolute;
             top: 0;
             right: 0;
           }
 
-          .hour-temp{
+          .hour-temp {
             font-size: 110%;
           }
         }
 
-        .hour-conditions{
+        .hour-conditions {
           align-self: center;
           font-size: 120%;
           padding-bottom: 10px;
         }
       }
-
     }
-
   }
 
   .partly-cloudy-day {
-    background: linear-gradient(to bottom right,
-        rgba(155, 152, 154, 0.4),
-        rgba(255, 252, 154, 0.8));
+    background: linear-gradient(
+      to bottom right,
+      rgba(155, 152, 154, 0.4),
+      rgba(255, 252, 154, 0.8)
+    );
   }
 
   .partly-cloudy-night {
-    background: linear-gradient(to bottom right,
-        rgba(136, 170, 175, 0.4),
-        rgba(134, 170, 175, 0.8));
+    background: linear-gradient(
+      to bottom right,
+      rgba(136, 170, 175, 0.4),
+      rgba(134, 170, 175, 0.8)
+    );
   }
 
   .clear-day {
@@ -569,9 +577,11 @@ header {
   }
 
   .cloudy {
-    background: linear-gradient(to bottom right,
-        var(--color-cloudy),
-        var(--color-cloudy));
+    background: linear-gradient(
+      to bottom right,
+      var(--color-cloudy),
+      var(--color-cloudy)
+    );
   }
 
   .rain {
@@ -607,9 +617,11 @@ header {
   }
 
   .snow-showers-night {
-    background: linear-gradient(to bottom right,
-        rgba(136, 170, 175, 0.4),
-        rgba(134, 170, 175, 0.8));
+    background: linear-gradient(
+      to bottom right,
+      rgba(136, 170, 175, 0.4),
+      rgba(134, 170, 175, 0.8)
+    );
     color: #fff;
   }
 
@@ -622,9 +634,11 @@ header {
   }
 
   .thunder-showers-night {
-    background: linear-gradient(to bottom right,
-        rgba(136, 170, 175, 0.4),
-        rgba(134, 170, 175, 0.8));
+    background: linear-gradient(
+      to bottom right,
+      rgba(136, 170, 175, 0.4),
+      rgba(134, 170, 175, 0.8)
+    );
     color: #fff;
   }
 
@@ -633,9 +647,11 @@ header {
   }
 
   .showers-night {
-    background: linear-gradient(to bottom right,
-        rgba(136, 170, 175, 0.4),
-        rgba(134, 170, 175, 0.8));
+    background: linear-gradient(
+      to bottom right,
+      rgba(136, 170, 175, 0.4),
+      rgba(134, 170, 175, 0.8)
+    );
     color: #fff;
   }
 
@@ -644,9 +660,11 @@ header {
   }
 
   .rain-snow-showers-night {
-    background: linear-gradient(to bottom right,
-        rgba(136, 170, 175, 0.4),
-        rgba(134, 170, 175, 0.8));
+    background: linear-gradient(
+      to bottom right,
+      rgba(136, 170, 175, 0.4),
+      rgba(134, 170, 175, 0.8)
+    );
     color: #fff;
   }
 

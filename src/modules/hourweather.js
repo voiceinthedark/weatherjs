@@ -4,12 +4,12 @@
  * @class HourWeather
  * @classdesc Collect the hourly weather forecast for the day
  * */
-class HourWeather{
+class HourWeather {
   #datetime;
   #temp;
   #feelslike;
   #humidity;
-  #precipitation
+  #precipitation;
   #precipprob;
   #windspeed;
   #solarenergy;
@@ -17,7 +17,7 @@ class HourWeather{
   #icon;
   /**
    * @constructor
-   * @param {Object} dayHourData 
+   * @param {Object} dayHourData
    * @param {string} dayHourData.datetime
    * @param {number} dayHourData.temp
    * @param {number} dayHourData.feelslike
@@ -29,48 +29,48 @@ class HourWeather{
    * @param {string} dayHourData.conditions
    * @param {string} dayHourData.icon
    * */
-  constructor(dayHourData){
+  constructor(dayHourData) {
     this.#datetime = dayHourData.datetime;
     this.#temp = dayHourData.temp;
     this.#feelslike = dayHourData.feelslike;
     this.#humidity = dayHourData.humidity;
     this.#precipitation = dayHourData.precipitation;
-    this.#precipprob =dayHourData.precipprob;
+    this.#precipprob = dayHourData.precipprob;
     this.#windspeed = dayHourData.windspeed;
     this.#solarenergy = dayHourData.solarenergy;
     this.#conditions = dayHourData.conditions;
     this.#icon = dayHourData.icon;
   }
 
-  get datetime(){
-    return this.#datetime
+  get datetime() {
+    return this.#datetime;
   }
-  get temp(){
-    return this.#temp
+  get temp() {
+    return this.#temp;
   }
-  get feelslike(){
-    return this.#feelslike
+  get feelslike() {
+    return this.#feelslike;
   }
-  get humidity(){
-    return this.#humidity
+  get humidity() {
+    return this.#humidity;
   }
-  get precipitation(){
-    return this.#precipitation
+  get precipitation() {
+    return this.#precipitation;
   }
-  get precipprob(){
-    return this.#precipprob
+  get precipprob() {
+    return this.#precipprob;
   }
-  get windspeed(){
-    return this.#windspeed
+  get windspeed() {
+    return this.#windspeed;
   }
-  get solarenergy(){
-    return this.#solarenergy
+  get solarenergy() {
+    return this.#solarenergy;
   }
-  get conditions(){
-    return this.#conditions
+  get conditions() {
+    return this.#conditions;
   }
-  get icon(){
-    return this.#icon
+  get icon() {
+    return this.#icon;
   }
 }
 

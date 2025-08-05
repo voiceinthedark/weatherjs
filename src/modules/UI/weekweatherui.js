@@ -22,7 +22,7 @@ class WeeKWeatherUI {
   /**
    * @method to render entire week forecast
    * @param {Array<TodayWeather>} weekDays
-   * @param {Function} handleClickCallback 
+   * @param {Function} handleClickCallback
    * @returns {HTMLElement} week item that contains the entire week forecast
    * */
   renderWeekCards(weekDays, handleClickCallback) {
@@ -38,7 +38,7 @@ class WeeKWeatherUI {
   /**
    * @method to render a weekday weather forecast
    * @param {TodayWeather} day - the day data
-   * @param {Function} handleClickCallback 
+   * @param {Function} handleClickCallback
    * @returns {HTMLElement} weekDayFrame
    * */
   renderWeekDayCard(day, handleClickCallback) {
@@ -244,7 +244,7 @@ class WeeKWeatherUI {
       weekDayCard.classList.add(day.icon);
     }
 
-    weekDayFrame.addEventListener('click', () => {
+    weekDayFrame.addEventListener("click", () => {
       // console.log(`inside week day ${day.id}`)
       handleClickCallback(day.id);
     });

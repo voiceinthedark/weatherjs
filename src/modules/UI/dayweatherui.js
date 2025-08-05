@@ -45,7 +45,7 @@ class DayWeatherUI {
    * @method
    * @description Renders the day card onto the page.
    * @param {TodayWeather} day - The day data to render.
-   * @param {Function} handleClickCallback 
+   * @param {Function} handleClickCallback
    * @returns {HTMLElement} The rendered day card element.
    */
   renderDayCard(day, handleClickCallback) {
@@ -265,8 +265,8 @@ class DayWeatherUI {
 
     dayCard.dataset.id = `${day.id}`;
 
-    dayCard.addEventListener('click', () => {
-      console.log(`clicked the day card for ${day.id}`)
+    dayCard.addEventListener("click", () => {
+      console.log(`clicked the day card for ${day.id}`);
       handleClickCallback(day.id);
     });
 

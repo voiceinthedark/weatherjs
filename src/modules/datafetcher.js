@@ -35,7 +35,7 @@ class DataFetcher {
     this.#unit = unit;
 
     this.#weekData = [];
-    this.#hoursData = []
+    this.#hoursData = [];
 
     this.setupSearchParameters();
     this.#fullUrl = new URL(
@@ -138,7 +138,7 @@ class DataFetcher {
         // Collect each day hours
         // TODO: Extract the hours data and associate each 24 hours list with the corresponding day
         // TODO: group result by day
-        for( let hour of day.hours){
+        for (let hour of day.hours) {
           let hourObj = {
             datetime: hour.datetime,
             temp: hour.temp,
@@ -151,16 +151,15 @@ class DataFetcher {
             conditions: hour.conditions,
             icon: hour.icon,
           };
-          hourObj = {day: obj.datetime, ...hourObj};
+          hourObj = { day: obj.datetime, ...hourObj };
           this.#hoursData.push(hourObj);
         }
-
       }
 
-      this.#groupedHoursByDay = Object.groupBy(this.#hoursData, (hour) =>{
+      this.#groupedHoursByDay = Object.groupBy(this.#hoursData, (hour) => {
         //group each 24 hours object by date
         return hour.day;
-      })
+      });
 
       return this.#data;
     } catch (error) {
@@ -193,7 +192,7 @@ class DataFetcher {
    * @method to return the hourly data
    * @returns {Array}
    * */
-  getHoursData(){
+  getHoursData() {
     return this.#hoursData;
   }
 
@@ -201,7 +200,7 @@ class DataFetcher {
    * @method to return the hourly data grouped by day
    * @returns {Array}
    * */
-  getGroupedHoursByDay(){
+  getGroupedHoursByDay() {
     return this.#groupedHoursByDay;
   }
 }

@@ -52,7 +52,7 @@ class AppController {
    * @returns {Promise<void>}
    * */
   async initialize() {
-    this.#uimanager.showLoading()
+    this.#uimanager.showLoading();
     try {
       this.#data = await this.#dataFetcher.collect();
       this.#weekData = await this.#dataFetcher.getWeekData();
@@ -77,11 +77,10 @@ class AppController {
       console.error("Error fetching initial data:", error);
       this.#data = undefined; // Ensure #data is in a known state on error
       this.#weekData = undefined;
-      this.setEmptyResult()
+      this.setEmptyResult();
     } finally {
-      this.#uimanager.hideLoading()
+      this.#uimanager.hideLoading();
     }
-
   }
 
   /**
@@ -112,7 +111,7 @@ class AppController {
   // }
 
   getGroupedByHoursData() {
-    return this.getWeek()
+    return this.getWeek();
   }
 
   setSearchBar() {
@@ -143,8 +142,10 @@ class AppController {
     }
 
     const dayWeatherUI = new DayWeatherUI(this.#uimanager);
-    const dayCard = dayWeatherUI.renderDayCard(this.#weekDays[0],
-      this.handleCardClick.bind(this));
+    const dayCard = dayWeatherUI.renderDayCard(
+      this.#weekDays[0],
+      this.handleCardClick.bind(this),
+    );
 
     if (this.#container) {
       this.#container.appendChild(dayCard);
@@ -166,7 +167,7 @@ class AppController {
     const weekWeatherUI = new WeeKWeatherUI(this.#uimanager);
     const weekForecast = weekWeatherUI.renderWeekCards(
       this.getWeek().slice(0, -1),
-      this.handleWeekDayClick.bind(this) 
+      this.handleWeekDayClick.bind(this),
     );
 
     if (this.#container) {
@@ -184,8 +185,8 @@ class AppController {
   async handleSearchButton(value) {
     if (value !== "" && value !== null) {
       console.log(`searching for ${value} in appcontroller`);
-      this.#uimanager.clearElement(this.#container)
-      this.#uimanager.showLoading()
+      this.#uimanager.clearElement(this.#container);
+      this.#uimanager.showLoading();
 
       try {
         await this.#dataFetcher.setQuery(value);
@@ -194,12 +195,12 @@ class AppController {
         const week = new WeekDaysWeather(this.#weekData);
         this.#weekDays = week.getDays();
 
-        const rawGroupedHoursByDay = this.#dataFetcher.getGroupedHoursByDay()
+        const rawGroupedHoursByDay = this.#dataFetcher.getGroupedHoursByDay();
 
         for (const dayWeather of this.#weekDays) {
           const dayKey = dayWeather.datetime;
           if (rawGroupedHoursByDay && rawGroupedHoursByDay[dayKey]) {
-            const hoursForThisDay = rawGroupedHoursByDay[dayKey]
+            const hoursForThisDay = rawGroupedHoursByDay[dayKey];
             const hoursWeatherInstance = new HoursWeather(hoursForThisDay);
             dayWeather.hours = hoursWeatherInstance;
           }
@@ -210,12 +211,10 @@ class AppController {
         this.setupFooter();
       } catch (error) {
         console.error("Error fetching data for search query", error);
-        this.setEmptyResult()
+        this.setEmptyResult();
       } finally {
-        this.#uimanager.hideLoading()
+        this.#uimanager.hideLoading();
       }
-
-
     }
   }
 
@@ -225,8 +224,8 @@ class AppController {
   async handleLocationButton() {
     // TODO: Fix Geolocation not getting the city name and getting out of bound on the ui
     console.log("Location button clicked, fetching current location data...");
-    this.#uimanager.clearElement(this.#container)
-    this.#uimanager.showLoading()
+    this.#uimanager.clearElement(this.#container);
+    this.#uimanager.showLoading();
 
     navigator.geolocation.getCurrentPosition(
       async (position) => {
@@ -258,15 +257,15 @@ class AppController {
           this.setupFooter();
         } catch (error) {
           console.error("Error fetching data for current location:", error);
-          this.setEmptyResult()
+          this.setEmptyResult();
         } finally {
-          this.#uimanager.hideLoading()
+          this.#uimanager.hideLoading();
         }
       },
       (error) => {
         console.error("Geolocation error:", error);
-        this.#uimanager.hideLoading()
-        this.setEmptyResult()
+        this.#uimanager.hideLoading();
+        this.setEmptyResult();
       },
     );
   }
@@ -282,45 +281,45 @@ class AppController {
 
   /**
    * @method to set the hourly data of the selected todayWeather object
-   * @param {HoursWeather} hours 
+   * @param {HoursWeather} hours
    * */
   setHourlyCards(hours) {
     const hourui = new HourUI(this.#uimanager);
-    const hoursList = hourui.renderHoursList(hours)
+    const hoursList = hourui.renderHoursList(hours);
 
     // Chech if there is an hourlist
-    const hl = document.getElementById('hourlist');
+    const hl = document.getElementById("hourlist");
     if (hl) {
       //remove it
-      this.#container.removeChild(hl)
+      this.#container.removeChild(hl);
 
-      this.#container.insertBefore(hoursList, this.#weekListUI)
+      this.#container.insertBefore(hoursList, this.#weekListUI);
     }
 
-    this.#container.insertBefore(hoursList, this.#weekListUI)
+    this.#container.insertBefore(hoursList, this.#weekListUI);
   }
 
   /**
    * @method to handle clicking the main weather card to display hourly data
-   * @param {string} id 
+   * @param {string} id
    * */
   handleCardClick(id) {
     // Get the todayWeather object associated with the clicked card id
-    const td = this.#weekDays.find(tw => tw.id === id)
+    const td = this.#weekDays.find((tw) => tw.id === id);
     if (td) {
-      console.log(td.hours)
+      console.log(td.hours);
       this.setHourlyCards(td.hours);
     }
   }
 
   /**
    * @method to handle week day click to display the hourly weather data
-   * @param {string} id - id of the week day to display 
+   * @param {string} id - id of the week day to display
    * */
-  handleWeekDayClick(id){
-    console.log('inside app controller @ id:', id)
+  handleWeekDayClick(id) {
+    console.log("inside app controller @ id:", id);
     // display hourly weather data
-    this.handleCardClick(id)
+    this.handleCardClick(id);
   }
 }
 
