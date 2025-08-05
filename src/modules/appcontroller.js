@@ -1,15 +1,15 @@
 // @ts-check
-import DataFetcher from "./datafetcher";
-import DayWeatherUI from "./UI/dayweatherui";
-import UIManager from "./UI/uimanager";
-import WeekDaysWeather from "./weekdaysweather";
-import allIcons from "../assets/icons/allicons";
-import TodayWeather from "./todayWeather";
-import WeeKWeatherUI from "./UI/weekweatherui";
-import SearchBarUI from "./UI/searchbarui";
-import FooterUI from "./UI/footerui";
-import HoursWeather from "./hoursweather";
-import HourUI from "./UI/hourui";
+import DataFetcher from "./datafetcher.js";
+import DayWeatherUI from "./UI/dayweatherui.js";
+import UIManager from "./UI/uimanager.js";
+import WeekDaysWeather from "./weekdaysweather.js";
+import allIcons from "../assets/icons/allicons.js";
+import TodayWeather from "./todayWeather.js";
+import WeeKWeatherUI from "./UI/weekweatherui.js";
+import SearchBarUI from "./UI/searchbarui.js";
+import FooterUI from "./UI/footerui.js";
+import HoursWeather from "./hoursweather.js";
+import HourUI from "./UI/hourui.js";
 
 /**
  * @class
@@ -27,6 +27,9 @@ class AppController {
   // #hoursWeather;
   #uimanager;
   #container;
+  /** @type {HTMLElement}
+   * @description holds a reference to the week list of items on the UI
+   * */
   #weekListUI;
 
   /**
@@ -163,6 +166,7 @@ class AppController {
     const weekWeatherUI = new WeeKWeatherUI(this.#uimanager);
     const weekForecast = weekWeatherUI.renderWeekCards(
       this.getWeek().slice(0, -1),
+      this.handleWeekDayClick.bind(this) 
     );
 
     if (this.#container) {
@@ -307,6 +311,16 @@ class AppController {
       console.log(td.hours)
       this.setHourlyCards(td.hours);
     }
+  }
+
+  /**
+   * @method to handle week day click to display the hourly weather data
+   * @param {string} id - id of the week day to display 
+   * */
+  handleWeekDayClick(id){
+    console.log('inside app controller @ id:', id)
+    // display hourly weather data
+    this.handleCardClick(id)
   }
 }
 

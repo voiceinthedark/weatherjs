@@ -1,7 +1,7 @@
 // @ts-check
 
-import TodayWeather from "../todayWeather";
-import UIManager from "./uimanager";
+import TodayWeather from "../todayWeather.js";
+import UIManager from "./uimanager.js";
 import { format, parse } from "date-fns";
 
 /**
@@ -22,13 +22,14 @@ class WeeKWeatherUI {
   /**
    * @method to render entire week forecast
    * @param {Array<TodayWeather>} weekDays
+   * @param {Function} handleClickCallback 
    * @returns {HTMLElement} week item that contains the entire week forecast
    * */
-  renderWeekCards(weekDays) {
+  renderWeekCards(weekDays, handleClickCallback) {
     const week = document.createElement("div");
     week.classList.add("week-list");
     for (let day of weekDays) {
-      const dayCard = this.renderWeekDayCard(day);
+      const dayCard = this.renderWeekDayCard(day, handleClickCallback);
       week.appendChild(dayCard);
     }
     return week;
@@ -37,9 +38,10 @@ class WeeKWeatherUI {
   /**
    * @method to render a weekday weather forecast
    * @param {TodayWeather} day - the day data
+   * @param {Function} handleClickCallback 
    * @returns {HTMLElement} weekDayFrame
    * */
-  renderWeekDayCard(day) {
+  renderWeekDayCard(day, handleClickCallback) {
     const weekDayFrame = document.createElement("div");
     weekDayFrame.classList.add("week-frame");
     const date = this.#uimanager.addElement("span", weekDayFrame, "week-date");
@@ -221,7 +223,7 @@ class WeeKWeatherUI {
       precipIcon.src = this.#uimanager.icons["precipitation"];
     }
     const precip = this.#uimanager.addElement("span", precipDiv, "week-precip");
-    precip.textContent = `${day.precipitationProbability}%`;
+    precip.textContent = `${day.precipprob}%`;
 
     /** BOTTOM SECTION **/
     const weekBotDiv = this.#uimanager.addElement(
@@ -241,6 +243,11 @@ class WeeKWeatherUI {
     if (weekDayCard instanceof HTMLElement) {
       weekDayCard.classList.add(day.icon);
     }
+
+    weekDayFrame.addEventListener('click', () => {
+      // console.log(`inside week day ${day.id}`)
+      handleClickCallback(day.id);
+    });
 
     return weekDayFrame;
   }

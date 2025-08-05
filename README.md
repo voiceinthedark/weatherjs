@@ -8,9 +8,10 @@ A weather application with vanilla javascript and css.
 
 - [x] Add Geolocation
 - [x] Add hourly forecast for the day
-- [ ] Add hourly forecast for each day of the week
+- [x] Add hourly forecast for each day of the week
+- [x] Make the week's list items interactive
+- [ ] Make hour list auto scroll to current hour
 - [ ] Make the week's list backgrounds vary in color degrees
-- [ ] Make the week's list items interactive
 
 ## Assets
 
