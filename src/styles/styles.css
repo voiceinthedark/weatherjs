@@ -18,10 +18,8 @@
 @font-face {
   font-family: "Montserrat";
   src:
-    url("../assets/fonts/Montserrat/Montserrat-VariableFont_wght.ttf")
-      format("truetype"),
-    url("../assets/fonts/Montserrat/Montserrat-Italic-VariableFont_wght.ttf")
-      format("truetype");
+    url("../assets/fonts/Montserrat/Montserrat-VariableFont_wght.ttf") format("truetype"),
+    url("../assets/fonts/Montserrat/Montserrat-Italic-VariableFont_wght.ttf") format("truetype");
   font-weight: 100 900;
   font-style: normal, italic;
 }
@@ -59,12 +57,11 @@ header {
   margin-top: 0;
   margin-bottom: 120px;
   padding-left: 30px;
+  max-width: 100%;
   width: 100%;
-  background: linear-gradient(
-    to right,
-    rgba(10, 110, 210, 0.5),
-    rgba(22, 122, 222, 0.8)
-  );
+  background: linear-gradient(to right,
+      rgba(10, 110, 210, 0.5),
+      rgba(22, 122, 222, 0.8));
 
   h1 {
     font-size: 320%;
@@ -73,6 +70,7 @@ header {
     align-items: center;
 
     &::before {
+      max-width: 100%;
       content: url("../assets/icons/icons8-four-seasons-96.png");
     }
   }
@@ -172,7 +170,7 @@ header {
 
         .day-temp {
           font-size: 370%;
-          letter-spacing: 3Q;
+          letter-spacing: 3;
         }
 
         .day-feel {
@@ -467,11 +465,9 @@ header {
     margin-top: 30px;
     width: 100%;
     padding: 10px 0;
-    background: linear-gradient(
-      to right,
-      rgba(10, 110, 210, 0.5),
-      rgba(22, 122, 222, 0.8)
-    );
+    background: linear-gradient(to right,
+        rgba(10, 110, 210, 0.5),
+        rgba(22, 122, 222, 0.8));
     display: flex;
     gap: 8px;
     justify-content: center;
@@ -552,19 +548,15 @@ header {
   }
 
   .partly-cloudy-day {
-    background: linear-gradient(
-      to bottom right,
-      rgba(155, 152, 154, 0.4),
-      rgba(255, 252, 154, 0.8)
-    );
+    background: linear-gradient(to bottom right,
+        rgba(155, 152, 154, 0.4),
+        rgba(255, 252, 154, 0.8));
   }
 
   .partly-cloudy-night {
-    background: linear-gradient(
-      to bottom right,
-      rgba(136, 170, 175, 0.4),
-      rgba(134, 170, 175, 0.8)
-    );
+    background: linear-gradient(to bottom right,
+        rgba(136, 170, 175, 0.4),
+        rgba(134, 170, 175, 0.8));
   }
 
   .clear-day {
@@ -577,11 +569,9 @@ header {
   }
 
   .cloudy {
-    background: linear-gradient(
-      to bottom right,
-      var(--color-cloudy),
-      var(--color-cloudy)
-    );
+    background: linear-gradient(to bottom right,
+        var(--color-cloudy),
+        var(--color-cloudy));
   }
 
   .rain {
@@ -617,11 +607,9 @@ header {
   }
 
   .snow-showers-night {
-    background: linear-gradient(
-      to bottom right,
-      rgba(136, 170, 175, 0.4),
-      rgba(134, 170, 175, 0.8)
-    );
+    background: linear-gradient(to bottom right,
+        rgba(136, 170, 175, 0.4),
+        rgba(134, 170, 175, 0.8));
     color: #fff;
   }
 
@@ -634,11 +622,9 @@ header {
   }
 
   .thunder-showers-night {
-    background: linear-gradient(
-      to bottom right,
-      rgba(136, 170, 175, 0.4),
-      rgba(134, 170, 175, 0.8)
-    );
+    background: linear-gradient(to bottom right,
+        rgba(136, 170, 175, 0.4),
+        rgba(134, 170, 175, 0.8));
     color: #fff;
   }
 
@@ -647,11 +633,9 @@ header {
   }
 
   .showers-night {
-    background: linear-gradient(
-      to bottom right,
-      rgba(136, 170, 175, 0.4),
-      rgba(134, 170, 175, 0.8)
-    );
+    background: linear-gradient(to bottom right,
+        rgba(136, 170, 175, 0.4),
+        rgba(134, 170, 175, 0.8));
     color: #fff;
   }
 
@@ -660,11 +644,9 @@ header {
   }
 
   .rain-snow-showers-night {
-    background: linear-gradient(
-      to bottom right,
-      rgba(136, 170, 175, 0.4),
-      rgba(134, 170, 175, 0.8)
-    );
+    background: linear-gradient(to bottom right,
+        rgba(136, 170, 175, 0.4),
+        rgba(134, 170, 175, 0.8));
     color: #fff;
   }
 
@@ -673,8 +655,70 @@ header {
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 900px) {
   .container {
+    height: 100vh;
+    min-height: 100%;
+
+    .week-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 12px;
+      height: 400px;
+      margin-top: 100px;
+    }
+
+    .day-card {
+      height: 100%;
+      width: 90%;
+      margin-top: 10px;
+
+
+    }
+  }
+
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+
+    h1 {
+      font-size: 220%;
+    }
+
+    .search-bar-div {
+      width: 95%;
+      justify-content: flex-start;
+      align-items: flex-start;
+      margin-bottom: 40px;
+
+      .search-bar {
+        flex: 0.5 1 auto;
+      }
+
+      .locate-btn,
+      .search-btn {
+        flex-grow: 1;
+        flex-shrink: 0;
+        flex-basis: 10%;
+      }
+    }
+  }
+
+  .footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+  }
+
+}
+
+@media screen and (max-width: 599px) {
+  .container {
+    height: 100vh;
+    min-height: 100%;
+
     .week-list {
       display: grid;
       grid-template-columns: repeat(1, 1fr);
@@ -682,5 +726,70 @@ header {
       height: 400px;
       margin-top: 100px;
     }
+
+    .day-card {
+      height: 100%;
+      width: 90%;
+      margin-top: 10px;
+
+      .day-top-div {
+        flex-direction: column;
+      }
+
+      .day-body {
+        justify-content: center;
+        align-items: center;
+
+        .day-body-top {
+          flex-direction: column;
+          justify-content: center;
+          align-items: flex-start;
+        }
+
+        .day-body-mid {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+    }
+  }
+
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+
+    h1 {
+      font-size: 220%;
+    }
+
+    .search-bar-div {
+      width: 95%;
+      justify-content: flex-start;
+      align-items: flex-start;
+      margin-bottom: 40px;
+      overflow: scroll;
+
+      .search-bar {
+        width: 80%;
+        flex: 0.8 0.3 80%;
+      }
+    }
+
+    .locate-btn,
+    .search-btn {
+      flex-grow: 1;
+      flex-shrink: 0;
+      flex-basis: 50%;
+      font-size: 100%;
+      padding: 0;
+    }
+  }
+
+  .footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
   }
 }
