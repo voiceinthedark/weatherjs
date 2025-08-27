@@ -57,7 +57,7 @@ header {
   margin-top: 0;
   margin-bottom: 120px;
   padding-left: 30px;
-  max-width: 100%;
+  min-width: 100%;
   width: 100%;
   background: linear-gradient(to right,
       rgba(10, 110, 210, 0.5),
@@ -111,7 +111,6 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   height: 100%;
   margin-top: 200px;
 
@@ -141,6 +140,7 @@ header {
     border-radius: 12px;
     height: 350px;
     margin-top: 40px;
+    align-self: center;
 
     &:hover {
       cursor: pointer;
@@ -296,18 +296,19 @@ header {
   .week-list {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    row-gap: 24px;
+    row-gap: 12px;
     column-gap: 12px;
     margin-top: 100px;
 
     .week-frame {
       display: flex;
       flex-direction: column;
+      justify-self: center;
       height: 400px;
 
       .week-date {
-        font-size: 140%;
-        text-align: center;
+        font-size: 120%;
+        text-align: left;
         margin-bottom: 16px;
       }
 
